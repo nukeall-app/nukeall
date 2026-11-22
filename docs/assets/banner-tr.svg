@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320" role="img" aria-label="NukeAll — Ücretsiz, açık kaynak, %100 yerel sosyal medya geçmişi temizleyici">
+  <defs>
+    <linearGradient id="bannerBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#09090b"/>
+      <stop offset="60%" stop-color="#0e0e13"/>
+      <stop offset="100%" stop-color="#14141a"/>
+    </linearGradient>
+    <radialGradient id="leftGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f97316" stop-opacity="0.28"/>
+      <stop offset="55%" stop-color="#ea580c" stop-opacity="0.09"/>
+      <stop offset="100%" stop-color="#09090b" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="topRightGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ea580c" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#09090b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="emblemRing" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+    <linearGradient id="emblemBlade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="55%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+    <pattern id="dotGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#ffffff" fill-opacity="0.045"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="320" rx="24" fill="url(#bannerBg)"/>
+  <rect x="0" y="0" width="1200" height="320" rx="24" fill="url(#dotGrid)"/>
+  <circle cx="155" cy="160" r="210" fill="url(#leftGlow)"/>
+  <circle cx="1050" cy="40" r="220" fill="url(#topRightGlow)"/>
+  <rect x="1" y="1" width="1198" height="318" rx="23" fill="none" stroke="#27272a" stroke-width="1.5"/>
+
+  <!-- NukeAll Emblem -->
+  <circle cx="155" cy="160" r="84" fill="#101015" stroke="#27272a" stroke-width="1.5"/>
+  <circle cx="155" cy="160" r="62" fill="none" stroke="url(#emblemRing)" stroke-width="6.5"/>
+  <circle cx="155" cy="160" r="12.5" fill="url(#emblemBlade)"/>
+  <path d="M 145.1 141.5 L 130.6 114.1 A 52 52 0 0 1 179.4 114.1 L 164.9 141.5 A 21 21 0 0 0 145.1 141.5 Z" fill="url(#emblemBlade)"/>
+  <path d="M 145.1 141.5 L 130.6 114.1 A 52 52 0 0 1 179.4 114.1 L 164.9 141.5 A 21 21 0 0 0 145.1 141.5 Z" fill="url(#emblemBlade)" transform="rotate(120 155 160)"/>
+  <path d="M 145.1 141.5 L 130.6 114.1 A 52 52 0 0 1 179.4 114.1 L 164.9 141.5 A 21 21 0 0 0 145.1 141.5 Z" fill="url(#emblemBlade)" transform="rotate(240 155 160)"/>
+
+  <!-- Top Accent Pill -->
+  <rect x="285" y="52" width="398" height="28" rx="14" fill="#f97316" fill-opacity="0.12" stroke="#f97316" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="484" y="70" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" letter-spacing="1.2" fill="#fb923c">AÇIK KAYNAK · %100 YEREL · TAMAMEN ÜCRETSİZ</text>
+
+  <!-- Wordmark -->
+  <text x="285" y="148" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="62" font-weight="800" letter-spacing="-1.5">
+    <tspan fill="#fafafa">Nuke</tspan><tspan fill="#f97316">All</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="285" y="194" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="21.5" font-weight="500" fill="#d4d4d8">Sosyal medya geçmişini toplu temizle — sıfır sunucu, sıfır takip, sıfır sınır.</text>
+
+  <!-- Platform Pills -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="600" fill="#e4e4e7">
+    <rect x="285" y="228" width="144" height="38" rx="10" fill="#18181b" stroke="#27272a" stroke-width="1.2"/>
+    <circle cx="306" cy="247" r="4" fill="#f97316"/>
+    <text x="321" y="252">X (Twitter)</text>
+
+    <rect x="443" y="228" width="140" height="38" rx="10" fill="#18181b" stroke="#27272a" stroke-width="1.2"/>
+    <circle cx="464" cy="247" r="4" fill="#f97316"/>
+    <text x="479" y="252">Instagram</text>
+
+    <rect x="597" y="228" width="114" height="38" rx="10" fill="#18181b" stroke="#27272a" stroke-width="1.2"/>
+    <circle cx="618" cy="247" r="4" fill="#f97316"/>
+    <text x="633" y="252">Reddit</text>
+
+    <rect x="725" y="228" width="128" height="38" rx="10" fill="#18181b" stroke="#27272a" stroke-width="1.2"/>
+    <circle cx="746" cy="247" r="4" fill="#f97316"/>
+    <text x="761" y="252">LinkedIn</text>
+  </g>
+</svg>
