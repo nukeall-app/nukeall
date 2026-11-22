@@ -1,0 +1,74 @@
+---
+import { REPO_URL } from '../config';
+import { path, t, type Lang, type PageKey } from '../i18n/routes';
+
+export interface Props {
+  lang: Lang;
+  page: PageKey;
+}
+
+const { lang, page } = Astro.props;
+const d = t(lang);
+const otherLang: Lang = lang === 'en' ? 'tr' : 'en';
+const switchPath = page === 'notFound' ? path('home', otherLang) : path(page, otherLang);
+const homeUrl = path('home', lang);
+---
+
+<header class="sticky top-0 z-40 border-b border-zinc-800/80 bg-zinc-950/90 backdrop-blur">
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+    <a href={homeUrl} class="flex items-center gap-2.5 font-bold text-lg tracking-tight text-white">
+      <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-orange-500 text-zinc-950 font-black">
+        ☢
+      </span>
+      <span>NukeAll</span>
+    </a>
+
+    <nav aria-label={d.nav.primary} class="hidden md:flex items-center gap-6 text-sm text-zinc-300">
+      <a href={`${homeUrl}#features`} class="hover:text-white transition-colors">{d.nav.features}</a>
+      <a href={path('compare', lang)} class:list={['hover:text-white transition-colors', page === 'compare' && 'text-orange-400 font-semibold']}>{d.nav.compare}</a>
+      <a href={path('faq', lang)} class:list={['hover:text-white transition-colors', page === 'faq' && 'text-orange-400 font-semibold']}>{d.nav.faq}</a>
+      <a href={path('install', lang)} class:list={['hover:text-white transition-colors', page === 'install' && 'text-orange-400 font-semibold']}>{d.nav.install}</a>
+      <a href={path('sponsor', lang)} class:list={['hover:text-white transition-colors', page === 'sponsor' && 'text-orange-400 font-semibold']}>{d.nav.sponsor}</a>
+    </nav>
+
+    <div class="flex items-center gap-2.5 text-sm">
+      <a
+        href={switchPath}
+        hreflang={otherLang}
+        aria-label={d.nav.switchLabel}
+        class="px-2.5 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-300 hover:border-zinc-700 hover:text-white text-xs font-semibold"
+      >
+        {otherLang.toUpperCase()}
+      </a>
+      <a
+        href={REPO_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-200 hover:border-zinc-700 text-xs font-semibold"
+      >
+        {d.nav.github}
+      </a>
+      <a
+        href={path('install', lang)}
+        class="px-3.5 py-1.5 rounded-lg bg-orange-500 text-zinc-950 font-bold text-xs hover:bg-orange-400 transition-colors"
+      >
+        {d.nav.install}
+      </a>
+
+      <details class="md:hidden relative">
+        <summary class="list-none cursor-pointer px-2.5 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900 text-xs font-semibold">
+          {d.nav.menu}
+        </summary>
+        <div class="absolute right-0 mt-2 w-48 rounded-xl border border-zinc-800 bg-zinc-900 p-2 shadow-xl flex flex-col gap-1 text-sm">
+          <a href={`${homeUrl}#features`} class="px-3 py-2 rounded-lg hover:bg-zinc-800">{d.nav.features}</a>
+          <a href={path('compare', lang)} class="px-3 py-2 rounded-lg hover:bg-zinc-800">{d.nav.compare}</a>
+          <a href={path('faq', lang)} class="px-3 py-2 rounded-lg hover:bg-zinc-800">{d.nav.faq}</a>
+          <a href={path('install', lang)} class="px-3 py-2 rounded-lg hover:bg-zinc-800">{d.nav.install}</a>
+          <a href={path('sponsor', lang)} class="px-3 py-2 rounded-lg hover:bg-zinc-800">{d.nav.sponsor}</a>
+          <a href={path('privacy', lang)} class="px-3 py-2 rounded-lg hover:bg-zinc-800">{d.nav.privacy}</a>
+          <a href={REPO_URL} target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg hover:bg-zinc-800">{d.nav.github} ↗</a>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>

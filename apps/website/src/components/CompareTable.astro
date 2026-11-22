@@ -1,0 +1,75 @@
+---
+import { t, type Lang } from '../i18n/routes';
+
+export interface Props {
+  lang: Lang;
+  compact?: boolean;
+}
+
+const { lang, compact = false } = Astro.props;
+const d = t(lang);
+const n = d.compare.notes;
+
+// Columns: NukeAll | Redact.dev | Cyd | TweetDeleter | PDS / Shreddit
+const matrix: Array<[string, string, string, string, string]> = [
+  ['✅', '❌', '⚠️', '❌', '✅'], // Free & unlimited
+  [`✅ (${n.gpl})`, '❌', '✅', '❌', '✅'], // Open source
+  ['✅', '❌', '❌', `✅ (${n.cloud})`, '❌'], // Browser extension
+  ['✅', '⚠️', '✅', '❌', '✅'], // Zero server
+  ['✅', `✅ (${n.paid})`, '❌', '❌', '❌'], // X+IG+Reddit
+  ['✅', '⚠️', `⚠️ (${n.xOnly})`, `⚠️ (${n.xPaid})`, '❌'], // Archive mode
+  ['✅', `✅ (${n.paid})`, '⚠️', '⚠️', '❌'], // Review grid
+  ['✅', '❌', '✅', '❌', '❌'], // Offline HTML
+  ['✅', `✅ (${n.paid})`, '❌', '❌', '❌'], // Risk scan
+  ['✅', `✅ (${n.paid})`, '⚠️', `✅ (${n.paid})`, '❌'], // Disappearing
+  ['✅', '⚠️', '❌', '❌', '⚠️'], // Reddit overwrite
+  ['✅', '✅', '✅', '⚠️', '⚠️'], // Protection rules
+  ['✅', '?', '✅', '–', '❌'], // Resume
+  ['✅', '❌', '❌', '❌', '❌'], // Shareable presets
+  ['✅', '❌', '❌', '❌', '❌'], // Deletion report
+  ['✅', '❌', '❌', '❌', '❌'], // Turkish UI
+];
+
+const rowCount = compact ? 9 : matrix.length;
+const visibleRows = d.compare.rows.slice(0, rowCount);
+---
+
+<div class="overflow-x-auto rounded-2xl border border-zinc-800 bg-zinc-900/50">
+  <table class="w-full text-left border-collapse text-sm">
+    <caption class="sr-only">{d.compare.caption}</caption>
+    <thead>
+      <tr class="border-b border-zinc-800 bg-zinc-900 text-xs uppercase tracking-wide text-zinc-400">
+        <th scope="col" class="p-4">{d.compare.featureCol}</th>
+        <th scope="col" class="p-4 text-orange-400 font-bold">NukeAll</th>
+        <th scope="col" class="p-4">Redact.dev</th>
+        <th scope="col" class="p-4">Cyd</th>
+        <th scope="col" class="p-4">TweetDeleter</th>
+        <th scope="col" class="p-4">PDS / Shreddit</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-zinc-800/70">
+      <tr class="bg-zinc-900/30">
+        <th scope="row" class="p-4 font-semibold text-zinc-200">{d.compare.pricing}</th>
+        {d.compare.prices.map((p, idx) => (
+          <td class:list={['p-4 text-xs', idx === 0 ? 'text-emerald-400 font-bold' : 'text-zinc-400']}>{p}</td>
+        ))}
+      </tr>
+      {visibleRows.map((label, idx) => {
+        const vals = matrix[idx] ?? ['?', '?', '?', '?', '?'];
+        return (
+          <tr class="hover:bg-zinc-900/40">
+            <th scope="row" class="p-4 font-medium text-zinc-200">{label}</th>
+            {vals.map((val, col) => (
+              <td class:list={['p-4 text-xs whitespace-nowrap', col === 0 ? 'font-semibold text-white' : 'text-zinc-400']}>
+                {val}
+              </td>
+            ))}
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</div>
+<p class="mt-3 text-xs text-zinc-500">
+  {d.compare.legend} · {d.compare.asOf}
+</p>

@@ -1,0 +1,80 @@
+---
+import { KOFI_URL, SPONSORS_URL } from '../config';
+import { SPONSORS } from '../data/sponsors';
+import { t, type Lang } from '../i18n/routes';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const d = t(lang);
+---
+
+<div class="max-w-5xl mx-auto px-4 py-16 space-y-14">
+  <header class="max-w-2xl space-y-4">
+    <h1 class="text-4xl font-extrabold text-white tracking-tight">{d.sponsor.h1}</h1>
+    <p class="text-lg text-zinc-400 leading-relaxed">{d.sponsor.intro}</p>
+    <div class="flex flex-wrap gap-3 pt-2">
+      <a
+        href={SPONSORS_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-5 py-3 rounded-xl bg-orange-500 text-zinc-950 font-bold text-sm hover:bg-orange-400"
+      >
+        {d.sponsor.ghBtn} ↗
+      </a>
+      <a
+        href={KOFI_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-5 py-3 rounded-xl border border-zinc-700 bg-zinc-900 text-white font-semibold text-sm hover:border-orange-500"
+      >
+        {d.sponsor.kofiBtn} ↗
+      </a>
+    </div>
+    <p class="text-xs text-zinc-500">{d.sponsor.note}</p>
+  </header>
+
+  <section class="space-y-6">
+    <h2 class="text-2xl font-bold text-white">{d.sponsor.tiersTitle}</h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {d.sponsor.tiers.map((tier) => (
+        <div class="p-5 rounded-2xl border border-zinc-800 bg-zinc-900/50 space-y-2">
+          <div class="text-2xl font-extrabold text-orange-400">
+            ${tier.price}<span class="text-xs font-normal text-zinc-400">{d.sponsor.perMonth}</span>
+          </div>
+          <div class="font-bold text-white">{tier.name}</div>
+          <p class="text-xs text-zinc-400 leading-relaxed">{tier.perks}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-bold text-white">{d.sponsor.wallTitle}</h2>
+    {SPONSORS.length === 0 ? (
+      <div class="p-6 rounded-2xl border border-dashed border-zinc-800 text-sm text-zinc-400">
+        {d.sponsor.wallEmpty}
+      </div>
+    ) : (
+      <div class="grid gap-3 sm:grid-cols-3">
+        {SPONSORS.map((s) => (
+          <div class="p-4 rounded-xl border border-zinc-800 bg-zinc-900/50">
+            <div class="font-semibold text-white">{s.name}</div>
+            <div class="text-xs text-orange-400">{s.tier}</div>
+          </div>
+        ))}
+      </div>
+    )}
+  </section>
+
+  <section class="space-y-3">
+    <h2 class="text-xl font-bold text-white">{d.sponsor.otherTitle}</h2>
+    <ul class="list-disc list-inside space-y-1.5 text-sm text-zinc-300">
+      {d.sponsor.other.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </section>
+</div>

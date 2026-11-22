@@ -1,0 +1,145 @@
+---
+import '../styles/global.css';
+import { SITE_NAME, SITE_URL, VERSION } from '../config';
+import { absUrl, path, t, type Lang, type PageKey } from '../i18n/routes';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+  lang: Lang;
+  page: PageKey;
+  extraJsonLd?: Record<string, unknown>[];
+}
+
+const { lang, page, extraJsonLd = [] } = Astro.props;
+const d = t(lang);
+const meta = d.meta[page];
+const currentPath = path(page, lang);
+const canonical = absUrl(currentPath);
+const enUrl = absUrl(path(page, 'en'));
+const trUrl = absUrl(path(page, 'tr'));
+const otherLang: Lang = lang === 'en' ? 'tr' : 'en';
+const otherUrl = path(page, otherLang);
+const ogImage = absUrl(`/og/og-${lang}.png`);
+const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
+
+const softwareJsonLd =
+  page === 'home'
+    ? [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: SITE_NAME,
+          applicationCategory: 'UtilitiesApplication',
+          operatingSystem: 'Firefox, Chrome, Edge, Brave',
+          softwareVersion: VERSION,
+          license: 'https://www.gnu.org/licenses/gpl-3.0.html',
+          url: SITE_URL,
+          inLanguage: ['en', 'tr'],
+          description: meta.description,
+          offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'USD',
+          },
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          name: SITE_NAME,
+          url: SITE_URL,
+          logo: absUrl('/favicon.svg'),
+        },
+      ]
+    : [];
+
+const allJsonLd = [...softwareJsonLd, ...extraJsonLd];
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+    <meta name="theme-color" content="#09090b" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {page !== 'notFound' && (
+      <>
+        <link rel="canonical" href={canonical} />
+        <link rel="alternate" hreflang="en" href={enUrl} />
+        <link rel="alternate" hreflang="tr" href={trUrl} />
+        <link rel="alternate" hreflang="x-default" href={enUrl} />
+      </>
+    )}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content={d.ogLocale} />
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={meta.title} />
+    <meta name="twitter:description" content={meta.description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    {allJsonLd.map((obj) => (
+      <script type="application/ld+json" set:html={JSON.stringify(obj)} />
+    ))}
+
+    {cfBeaconToken && (
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: cfBeaconToken })}
+      />
+    )}
+  </head>
+  <body class="min-h-screen flex flex-col bg-zinc-950 text-zinc-100">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:rounded-lg focus:bg-orange-500 focus:text-zinc-950 focus:font-semibold"
+    >
+      {d.nav.skip}
+    </a>
+
+    {page !== 'notFound' && (
+      <div
+        id="lang-banner"
+        class="hidden bg-zinc-900 border-b border-zinc-800 px-4 py-2 text-xs text-zinc-300"
+      >
+        <div class="max-w-6xl mx-auto flex items-center justify-between gap-3">
+          <span>{d.banner.text}</span>
+          <div class="flex items-center gap-3 shrink-0">
+            <a href={otherUrl} class="text-orange-400 font-semibold hover:underline">
+              {d.banner.action} →
+            </a>
+            <button
+              id="lang-banner-dismiss"
+              type="button"
+              class="text-zinc-400 hover:text-zinc-200 cursor-pointer"
+            >
+              {d.banner.dismiss}
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <Header lang={lang} page={page} />
+
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+
+    <Footer lang={lang} page={page} />
+
+    <script defer src="/lang-banner.js"></script>
+  </body>
+</html>

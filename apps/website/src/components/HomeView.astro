@@ -1,0 +1,208 @@
+---
+import { AMO_LIVE, AMO_URL, RELEASES_URL, REPO_URL } from '../config';
+import { path, t, type Lang } from '../i18n/routes';
+import CompareTable from './CompareTable.astro';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const d = t(lang);
+const installUrl = path('install', lang);
+const firefoxHref = AMO_LIVE ? AMO_URL : `${installUrl}#firefox`;
+---
+
+<section class="relative overflow-hidden border-b border-zinc-800/80">
+  <div class="max-w-6xl mx-auto px-4 py-20 md:py-28">
+    <div class="max-w-3xl space-y-6">
+      <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-orange-500/10 text-orange-400 border border-orange-500/30">
+        {d.hero.eyebrow}
+      </span>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.08]">
+        {d.hero.h1Lead}{' '}
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">
+          {d.hero.h1Tail}
+        </span>
+      </h1>
+
+      <p class="text-lg text-zinc-300 leading-relaxed max-w-2xl">
+        {d.hero.sub}
+      </p>
+
+      <div class="flex flex-wrap items-center gap-3 pt-2">
+        <a
+          href={firefoxHref}
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-orange-500 text-zinc-950 font-bold text-sm hover:bg-orange-400 transition-colors"
+        >
+          <span>{d.hero.ctaFirefox}</span>
+          {!AMO_LIVE && (
+            <span class="px-1.5 py-0.5 rounded bg-zinc-950/20 text-[10px] uppercase font-extrabold">
+              {d.hero.soon}
+            </span>
+          )}
+        </a>
+        <a
+          href={`${installUrl}#chromium`}
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-zinc-700 bg-zinc-900 text-white font-semibold text-sm hover:border-orange-500 transition-colors"
+        >
+          {d.hero.ctaChrome}
+        </a>
+        <a
+          href={REPO_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-zinc-800 text-zinc-300 font-semibold text-sm hover:text-white hover:border-zinc-700 transition-colors"
+        >
+          ★ {d.hero.ctaGithub}
+        </a>
+      </div>
+
+      <p class="text-xs text-zinc-500">{d.hero.note}</p>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-zinc-900 flex flex-wrap items-center gap-3">
+      <span class="text-xs uppercase tracking-wider text-zinc-500 font-semibold mr-2">{d.platforms.title}:</span>
+      <a
+        href={path('guideTweets', lang)}
+        class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:border-emerald-400 transition-colors"
+      >
+        X (Twitter) · {d.platforms.live}
+      </a>
+      <a
+        href={path('guideIgComments', lang)}
+        class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:border-emerald-400 transition-colors"
+      >
+        Instagram · {d.platforms.live}
+      </a>
+      <a
+        href={path('guideReddit', lang)}
+        class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:border-emerald-400 transition-colors"
+      >
+        Reddit · {d.platforms.live}
+      </a>
+      <a
+        href={path('guideLinkedin', lang)}
+        class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:border-emerald-400 transition-colors"
+      >
+        LinkedIn · {d.platforms.live}
+      </a>
+      <span class="px-3 py-1 rounded-full text-xs text-zinc-500 border border-zinc-800/80">
+        Bluesky · Threads · Facebook · YouTube ({d.platforms.soon})
+      </span>
+    </div>
+  </div>
+</section>
+
+<section id="features" class="max-w-6xl mx-auto px-4 py-20 space-y-10">
+  <div class="max-w-2xl space-y-2">
+    <h2 class="text-3xl font-bold text-white tracking-tight">{d.features.title}</h2>
+    <p class="text-zinc-400">{d.features.subtitle}</p>
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {d.features.items.map((f) => (
+      <article class="p-5 rounded-2xl border border-zinc-800 bg-zinc-900/50 space-y-2">
+        <div class="text-xl" aria-hidden="true">{f.icon}</div>
+        <h3 class="font-bold text-white text-base">{f.title}</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed">{f.body}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<section class="border-y border-zinc-800/80 bg-zinc-900/30">
+  <div class="max-w-6xl mx-auto px-4 py-20 space-y-10">
+    <h2 class="text-3xl font-bold text-white tracking-tight">{d.how.title}</h2>
+    <div class="grid gap-6 md:grid-cols-3">
+      {d.how.steps.map((s, idx) => (
+        <div class="p-6 rounded-2xl border border-zinc-800 bg-zinc-950 space-y-3">
+          <div class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-orange-500/15 text-orange-400 font-bold text-sm border border-orange-500/30">
+            {idx + 1}
+          </div>
+          <h3 class="font-bold text-white text-lg">{s.title}</h3>
+          <p class="text-sm text-zinc-400 leading-relaxed">{s.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="max-w-6xl mx-auto px-4 py-20 space-y-8">
+  <div class="max-w-2xl space-y-3">
+    <h2 class="text-3xl font-bold text-white tracking-tight">{d.privacy.title}</h2>
+    <p class="text-zinc-300 leading-relaxed">{d.privacy.body}</p>
+  </div>
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    {d.privacy.points.map((pt) => (
+      <div class="p-5 rounded-2xl border border-zinc-800 bg-zinc-900/40 space-y-2">
+        <h3 class="font-bold text-emerald-400 text-sm">{pt.title}</h3>
+        <p class="text-xs text-zinc-400 leading-relaxed">{pt.body}</p>
+      </div>
+    ))}
+  </div>
+  <div>
+    <a href={path('privacy', lang)} class="text-sm text-orange-400 font-semibold hover:underline">
+      {d.privacy.cta} →
+    </a>
+  </div>
+</section>
+
+<section class="border-t border-zinc-800/80 bg-zinc-900/20">
+  <div class="max-w-6xl mx-auto px-4 py-20 space-y-8">
+    <div class="flex items-end justify-between gap-4 flex-wrap">
+      <div class="space-y-2">
+        <h2 class="text-3xl font-bold text-white tracking-tight">{d.compareSection.title}</h2>
+        <p class="text-zinc-400">{d.compareSection.subtitle}</p>
+      </div>
+      <a href={path('compare', lang)} class="text-sm text-orange-400 font-semibold hover:underline">
+        {d.compareSection.cta} →
+      </a>
+    </div>
+    <CompareTable lang={lang} compact={true} />
+  </div>
+</section>
+
+<section class="max-w-4xl mx-auto px-4 py-20 space-y-6">
+  <div class="flex items-center justify-between gap-4">
+    <h2 class="text-3xl font-bold text-white tracking-tight">{d.faq.homeTitle}</h2>
+    <a href={path('faq', lang)} class="text-sm text-orange-400 font-semibold hover:underline">
+      {d.faq.more} →
+    </a>
+  </div>
+  <div class="space-y-3">
+    {d.faq.items.slice(0, 4).map((item) => (
+      <details class="group rounded-xl border border-zinc-800 bg-zinc-900/50 p-4">
+        <summary class="cursor-pointer font-semibold text-white list-none flex items-center justify-between gap-3">
+          <span>{item.q}</span>
+          <span class="text-orange-400 group-open:rotate-45 transition-transform">+</span>
+        </summary>
+        <p class="mt-3 text-sm text-zinc-400 leading-relaxed">{item.a}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
+<section class="border-t border-zinc-800 bg-gradient-to-b from-zinc-900/60 to-zinc-950">
+  <div class="max-w-4xl mx-auto px-4 py-16 text-center space-y-5">
+    <h2 class="text-3xl font-bold text-white">{d.ctaBand.title}</h2>
+    <p class="text-zinc-400">{d.ctaBand.body}</p>
+    <div class="flex justify-center flex-wrap gap-3">
+      <a
+        href={installUrl}
+        class="px-5 py-3 rounded-xl bg-orange-500 text-zinc-950 font-bold text-sm hover:bg-orange-400"
+      >
+        {d.nav.install}
+      </a>
+      <a
+        href={RELEASES_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-5 py-3 rounded-xl border border-zinc-700 text-white font-semibold text-sm hover:border-orange-500"
+      >
+        GitHub Releases ↗
+      </a>
+    </div>
+  </div>
+</section>

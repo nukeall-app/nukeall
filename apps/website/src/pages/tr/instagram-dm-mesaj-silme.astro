@@ -1,0 +1,8 @@
+---
+import Base from '../../layouts/Base.astro';
+import GuideView from '../../components/GuideView.astro';
+import { buildGuideJsonLd } from '../../data/guides';
+---
+<Base lang="tr" page="guideIgDm" extraJsonLd={buildGuideJsonLd('guideIgDm', 'tr')}>
+  <GuideView lang="tr" guideKey="guideIgDm" />
+</Base>

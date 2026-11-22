@@ -1,0 +1,44 @@
+---
+import { path, t, type Lang } from '../i18n/routes';
+import CompareTable from './CompareTable.astro';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const d = t(lang);
+---
+
+<div class="max-w-6xl mx-auto px-4 py-16 space-y-12">
+  <header class="max-w-3xl space-y-3">
+    <h1 class="text-4xl font-extrabold text-white tracking-tight">{d.compare.h1}</h1>
+    <p class="text-lg text-zinc-400 leading-relaxed">{d.compare.intro}</p>
+  </header>
+
+  <section>
+    <CompareTable lang={lang} compact={false} />
+  </section>
+
+  <section class="grid gap-6 md:grid-cols-2">
+    {d.compare.alts.map((alt) => (
+      <article class="p-6 rounded-2xl border border-zinc-800 bg-zinc-900/40 space-y-2">
+        <h2 class="text-xl font-bold text-white">{alt.title}</h2>
+        <p class="text-sm text-zinc-300 leading-relaxed">{alt.body}</p>
+      </article>
+    ))}
+  </section>
+
+  <div class="p-6 rounded-2xl border border-zinc-800 bg-zinc-900/30 flex items-center justify-between gap-4 flex-wrap">
+    <div>
+      <div class="font-bold text-white text-lg">{d.ctaBand.title}</div>
+      <p class="text-sm text-zinc-400">{d.compare.disclaimer}</p>
+    </div>
+    <a
+      href={path('install', lang)}
+      class="px-5 py-2.5 rounded-xl bg-orange-500 text-zinc-950 font-bold text-sm hover:bg-orange-400"
+    >
+      {d.nav.install}
+    </a>
+  </div>
+</div>

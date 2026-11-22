@@ -1,0 +1,227 @@
+name: CLA Assistant Check
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  statuses: write
+
+concurrency:
+  group: cla-signatures
+  cancel-in-progress: false
+
+jobs:
+  cla-check:
+    name: Verify Contributor License Agreement
+    if: >-
+      github.event_name == 'pull_request_target' ||
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.pull_request != null &&
+       github.event.comment.user.type != 'Bot')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout base branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check and record CLA signature
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('node:fs');
+            const path = require('node:path');
+            const { execFileSync } = require('node:child_process');
+
+            const SIGNING_PHRASE = 'I have read the CLA Document and I hereby sign the CLA';
+            const CLA_MARKER = '<!-- nukeall-cla-bot -->';
+            const SIGNATURES_FILE = path.join(process.env.GITHUB_WORKSPACE, 'cla-signatures.json');
+
+            const isBotLogin = (login) =>
+              !login ||
+              login.endsWith('[bot]') ||
+              login === 'web-flow';
+
+            let prNumber;
+            if (context.eventName === 'pull_request_target') {
+              prNumber = context.payload.pull_request.number;
+            } else {
+              prNumber = context.payload.issue.number;
+            }
+
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+            });
+
+            if (pr.state !== 'open') {
+              core.info(`PR #${prNumber} is ${pr.state}; skipping CLA check.`);
+              return;
+            }
+
+            const headSha = pr.head.sha;
+
+            // Load existing signature store from default branch.
+            const store = fs.existsSync(SIGNATURES_FILE)
+              ? JSON.parse(fs.readFileSync(SIGNATURES_FILE, 'utf8'))
+              : { claVersion: '1.0', claDocument: 'CLA.md', signedContributors: [] };
+
+            if (!Array.isArray(store.signedContributors)) {
+              store.signedContributors = [];
+            }
+
+            const hasSigned = (login) =>
+              store.signedContributors.some(
+                (entry) => String(entry.name || '').toLowerCase() === String(login || '').toLowerCase()
+              );
+
+            // Collect all human contributors on this PR (author + committers) BEFORE processing comments.
+            const commits = await github.paginate(github.rest.pulls.listCommits, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+              per_page: 100,
+            });
+
+            const contributors = new Set();
+            if (pr.user?.login && !isBotLogin(pr.user.login)) {
+              contributors.add(pr.user.login);
+            }
+            const unlinkedCommits = [];
+            for (const c of commits) {
+              const login = c.author?.login;
+              if (login && !isBotLogin(login)) {
+                contributors.add(login);
+              } else if (!login && c.commit?.author?.email && !c.commit.author.email.includes('[bot]')) {
+                unlinkedCommits.push(c.commit.author.email);
+              }
+            }
+
+            // Handle PR comment signing or manual recheck (restricted to open-PR contributors / maintainers).
+            if (context.eventName === 'issue_comment') {
+              const body = String(context.payload.comment.body || '').trim();
+              const commenter = context.payload.comment.user;
+              const matchesSign = body.toLowerCase() === SIGNING_PHRASE.toLowerCase();
+              const matchesRecheck = body.toLowerCase() === 'recheck';
+              const isPrContributor = [...contributors].some(
+                (u) => u.toLowerCase() === String(commenter.login || '').toLowerCase()
+              );
+              const isMaintainer = ['OWNER', 'MEMBER', 'COLLABORATOR'].includes(
+                String(context.payload.comment.author_association || '')
+              );
+
+              if (!matchesSign && !matchesRecheck) {
+                core.info('Comment is not a CLA signature or recheck request; skipping.');
+                return;
+              }
+
+              if (matchesSign && !isPrContributor) {
+                core.info(`Ignoring CLA sign comment from @${commenter.login}: not a contributor on open PR #${prNumber}.`);
+                return;
+              }
+
+              if (matchesRecheck && !isPrContributor && !isMaintainer) {
+                core.info(`Ignoring recheck request from @${commenter.login}: not a contributor or maintainer on PR #${prNumber}.`);
+                return;
+              }
+
+              if (matchesSign && !isBotLogin(commenter.login) && !hasSigned(commenter.login)) {
+                store.signedContributors.push({
+                  name: commenter.login,
+                  id: commenter.id,
+                  comment_id: context.payload.comment.id,
+                  created_at: context.payload.comment.created_at,
+                  repoId: `${context.repo.owner}/${context.repo.repo}`,
+                  pullRequestNo: prNumber,
+                });
+
+                fs.writeFileSync(SIGNATURES_FILE, `${JSON.stringify(store, null, 2)}\n`, 'utf8');
+
+                execFileSync('git', ['config', 'user.name', 'github-actions[bot]']);
+                execFileSync('git', ['config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com']);
+                execFileSync('git', ['add', 'cla-signatures.json']);
+                execFileSync('git', ['commit', '-m', `chore(cla): record CLA signature for @${commenter.login} (#${prNumber})`]);
+                execFileSync('git', ['push']);
+              }
+            }
+
+            const signed = [];
+            const unsigned = [];
+            for (const login of contributors) {
+              if (hasSigned(login)) {
+                signed.push(login);
+              } else {
+                unsigned.push(login);
+              }
+            }
+
+            const allSigned = unsigned.length === 0 && unlinkedCommits.length === 0;
+
+            let commentBody = `${CLA_MARKER}\n`;
+            if (allSigned) {
+              commentBody +=
+                `**CLA Check Passed** — All contributors (${signed.map((u) => `@${u}`).join(', ') || 'bot'}) have signed the [NukeAll CLA](./CLA.md). Thank you!\n`;
+            } else {
+              const missingList = unsigned.map((u) => `@${u}`).join(', ');
+              commentBody +=
+                `Thank you for your pull request! Before we can merge, all human contributors must sign our [Contributor License Agreement (CLA)](./CLA.md).\n\n`;
+              if (unsigned.length > 0) {
+                commentBody += `**Pending signature:** ${missingList}\n\n`;
+              }
+              if (unlinkedCommits.length > 0) {
+                commentBody += `**Unlinked commit email(s):** ${[...new Set(unlinkedCommits)].join(', ')} — please link your Git commit email to your GitHub account, then comment \`recheck\`.\n\n`;
+              }
+              commentBody +=
+                `To sign, please copy and paste the exact comment below on this pull request:\n` +
+                `\`\`\`text\n${SIGNING_PHRASE}\n\`\`\`\n` +
+                `You only need to sign once across all future pull requests. (If you already signed or fixed commit authorship, comment \`recheck\`.)`;
+            }
+
+            // Update or create sticky CLA comment on PR.
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              per_page: 100,
+            });
+            const existingComment = comments.find((c) => (c.body || '').includes(CLA_MARKER));
+
+            if (existingComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existingComment.id,
+                body: commentBody,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body: commentBody,
+              });
+            }
+
+            // Set commit status so issue_comment signatures turn the PR check green immediately.
+            await github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: headSha,
+              state: allSigned ? 'success' : 'failure',
+              context: 'NukeAll CLA',
+              description: allSigned
+                ? 'All contributors have signed the NukeAll CLA.'
+                : `Waiting for CLA signature from: ${unsigned.map((u) => `@${u}`).join(', ') || 'unlinked email'}`,
+            });
+
+            if (!allSigned) {
+              core.setFailed('One or more contributors have not signed CLA.md yet.');
+            }

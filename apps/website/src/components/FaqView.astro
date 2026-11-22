@@ -1,0 +1,29 @@
+---
+import { t, type Lang } from '../i18n/routes';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const d = t(lang);
+---
+
+<div class="max-w-4xl mx-auto px-4 py-16 space-y-10">
+  <header class="space-y-3">
+    <h1 class="text-4xl font-extrabold text-white tracking-tight">{d.faq.h1}</h1>
+    <p class="text-lg text-zinc-400">{d.faq.intro}</p>
+  </header>
+
+  <div class="space-y-4">
+    {d.faq.items.map((item) => (
+      <details class="group rounded-2xl border border-zinc-800 bg-zinc-900/50 p-5" open>
+        <summary class="cursor-pointer font-bold text-white text-base list-none flex items-center justify-between gap-3">
+          <span>{item.q}</span>
+          <span class="text-orange-400 group-open:rotate-45 transition-transform">+</span>
+        </summary>
+        <p class="mt-3 text-sm text-zinc-300 leading-relaxed">{item.a}</p>
+      </details>
+    ))}
+  </div>
+</div>

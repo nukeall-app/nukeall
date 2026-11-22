@@ -1,0 +1,18 @@
+---
+import Base from '../../layouts/Base.astro';
+import FaqView from '../../components/FaqView.astro';
+import { t } from '../../i18n/routes';
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: t('tr').faq.items.map((it) => ({
+    '@type': 'Question',
+    name: it.q,
+    acceptedAnswer: { '@type': 'Answer', text: it.a },
+  })),
+};
+---
+<Base lang="tr" page="faq" extraJsonLd={[faqJsonLd]}>
+  <FaqView lang="tr" />
+</Base>

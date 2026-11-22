@@ -1,0 +1,19 @@
+name: Feature request
+description: Suggest an improvement or a new platform adapter
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: What would you like to see?
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This only acts on the logged-in user's own content (no mass-reporting or third-party scraping)
+          required: true
+        - label: This works 100% locally without external servers or telemetry
+          required: true

@@ -1,0 +1,31 @@
+name: Platform selector / API broken
+description: Report when X, Instagram or Reddit changed its interface or GraphQL operation
+labels: ["platform-broken"]
+body:
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - X (Twitter)
+        - Instagram
+        - Reddit
+    validations:
+      required: true
+  - type: dropdown
+    id: action
+    attributes:
+      label: What failed?
+      options:
+        - Timeline scan
+        - Delete post / reply
+        - Unlike / un-repost
+        - Archive import
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Error message (redact personal data)
+    validations:
+      required: true

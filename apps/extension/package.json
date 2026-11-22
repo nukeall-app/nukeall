@@ -1,0 +1,34 @@
+{
+  "name": "@nukeall/extension",
+  "version": "0.1.0",
+  "description": "NukeAll: free, open-source, local-only social media history cleaner.",
+  "private": true,
+  "type": "module",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "dev": "wxt",
+    "dev:firefox": "wxt -b firefox --mv3",
+    "build": "wxt build",
+    "build:firefox": "wxt build -b firefox --mv3",
+    "zip": "wxt zip",
+    "zip:firefox": "wxt zip -b firefox --mv3",
+    "icons": "node scripts/gen-icons.mjs",
+    "prepare:wxt": "wxt prepare",
+    "typecheck": "wxt prepare && tsc --noEmit",
+    "test": "vitest run",
+    "lint:firefox": "web-ext lint -s .output/firefox-mv3"
+  },
+  "dependencies": {
+    "preact": "^11.2.0"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.6",
+    "@tailwindcss/vite": "^4.3.5",
+    "fake-indexeddb": "^6.2.8",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^5.8.3",
+    "vitest": "^5.1.1",
+    "web-ext": "^10.8.0",
+    "wxt": "^0.21.5"
+  }
+}

@@ -1,0 +1,14 @@
+node_modules/
+.output/
+.wxt/
+dist/
+.astro/
+*.log
+.DS_Store
+.env
+.env.*
+web-ext-artifacts/
+coverage/
+
+# Local metrics snapshots (never commit)
+metrics-local/
