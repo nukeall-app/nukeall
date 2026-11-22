@@ -16,13 +16,14 @@ const matrix: Array<[string, string, string, string, string]> = [
   [`✅ (${n.gpl})`, '❌', '✅', '❌', '✅'], // Open source
   ['✅', '❌', '❌', `✅ (${n.cloud})`, '❌'], // Browser extension
   ['✅', '⚠️', '✅', '❌', '✅'], // Zero server
-  ['✅', `✅ (${n.paid})`, '❌', '❌', '❌'], // X+IG+Reddit
+  ['✅', `✅ (${n.paid})`, '❌', '❌', '❌'], // 4 platforms in one tool
+  ['✅', `✅ (${n.paid})`, '✅', `✅ (${n.paid})`, '❌'], // X capabilities
+  ['✅', '⚠️', '❌', '❌', '❌'], // Instagram + DM unsend + UTF-8 JSON
+  ['✅', '⚠️', '❌', '❌', '⚠️'], // Reddit 0-3 pass overwrite + CSV archive
+  ['✅', '⚠️', '❌', '❌', '❌'], // LinkedIn Date picker + Snowflake + Shares.csv
   ['✅', '⚠️', `⚠️ (${n.xOnly})`, `⚠️ (${n.xPaid})`, '❌'], // Archive mode
-  ['✅', `✅ (${n.paid})`, '⚠️', '⚠️', '❌'], // Review grid
+  ['✅', `✅ (${n.paid})`, '⚠️', '⚠️', '❌'], // Review grid & calendar date picker
   ['✅', '❌', '✅', '❌', '❌'], // Offline HTML
-  ['✅', `✅ (${n.paid})`, '❌', '❌', '❌'], // Risk scan
-  ['✅', `✅ (${n.paid})`, '⚠️', `✅ (${n.paid})`, '❌'], // Disappearing
-  ['✅', '⚠️', '❌', '❌', '⚠️'], // Reddit overwrite
   ['✅', '✅', '✅', '⚠️', '⚠️'], // Protection rules
   ['✅', '?', '✅', '–', '❌'], // Resume
   ['✅', '❌', '❌', '❌', '❌'], // Shareable presets
@@ -30,7 +31,7 @@ const matrix: Array<[string, string, string, string, string]> = [
   ['✅', '❌', '❌', '❌', '❌'], // Turkish UI
 ];
 
-const rowCount = compact ? 9 : matrix.length;
+const rowCount = compact ? 11 : matrix.length;
 const visibleRows = d.compare.rows.slice(0, rowCount);
 ---
 
