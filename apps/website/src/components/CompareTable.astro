@@ -14,24 +14,21 @@ const n = d.compare.notes;
 const matrix: Array<[string, string, string, string, string]> = [
   ['✅', '❌', '⚠️', '❌', '✅'], // Free & unlimited
   [`✅ (${n.gpl})`, '❌', '✅', '❌', '✅'], // Open source
-  ['✅', '❌', '❌', `✅ (${n.cloud})`, '❌'], // Browser extension
+  ['✅', '❌', '❌', `✅ (${n.cloud})`, '❌'], // No password needed / browser extension
   ['✅', '⚠️', '✅', '❌', '✅'], // Zero server
-  ['✅', `✅ (${n.paid})`, '❌', '❌', '❌'], // 4 platforms in one tool
-  ['✅', `✅ (${n.paid})`, '✅', `✅ (${n.paid})`, '❌'], // X capabilities
-  ['✅', '⚠️', '❌', '❌', '❌'], // Instagram + DM unsend + UTF-8 JSON
-  ['✅', '⚠️', '❌', '❌', '⚠️'], // Reddit 0-3 pass overwrite + CSV archive
-  ['✅', '⚠️', '❌', '❌', '❌'], // LinkedIn Date picker + Snowflake + Shares.csv
+  ['✅', `✅ (${n.paid})`, '✅', `✅ (${n.paid})`, '❌'], // X
+  ['✅', '⚠️', '❌', '❌', '❌'], // Instagram + DM unsend
+  ['✅', '⚠️', '❌', '❌', '⚠️'], // Reddit overwrite
+  ['✅', '⚠️', '❌', '❌', '❌'], // LinkedIn date range
   ['✅', '⚠️', `⚠️ (${n.xOnly})`, `⚠️ (${n.xPaid})`, '❌'], // Archive mode
-  ['✅', `✅ (${n.paid})`, '⚠️', '⚠️', '❌'], // Review grid & calendar date picker
-  ['✅', '❌', '✅', '❌', '❌'], // Offline HTML
+  ['✅', `✅ (${n.paid})`, '⚠️', '⚠️', '❌'], // Date picker & review
   ['✅', '✅', '✅', '⚠️', '⚠️'], // Protection rules
-  ['✅', '?', '✅', '–', '❌'], // Resume
-  ['✅', '❌', '❌', '❌', '❌'], // Shareable presets
-  ['✅', '❌', '❌', '❌', '❌'], // Deletion report
-  ['✅', '❌', '❌', '❌', '❌'], // Turkish UI
+  ['✅', '❌', '✅', '❌', '❌'], // Offline backup & summary
+  ['✅', '?', '✅', '–', '❌'], // Auto resume
+  ['✅', '❌', '❌', '❌', '❌'], // Turkish & English UI
 ];
 
-const rowCount = compact ? 11 : matrix.length;
+const rowCount = compact ? 10 : matrix.length;
 const visibleRows = d.compare.rows.slice(0, rowCount);
 ---
 

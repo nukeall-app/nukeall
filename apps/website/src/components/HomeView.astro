@@ -14,83 +14,93 @@ const firefoxHref = AMO_LIVE ? AMO_URL : `${installUrl}#firefox`;
 ---
 
 <section class="relative overflow-hidden border-b border-zinc-800/80">
-  <div class="max-w-6xl mx-auto px-4 py-20 md:py-28">
-    <div class="max-w-3xl space-y-6">
+  <div class="max-w-6xl mx-auto px-4 py-16 md:py-24 grid gap-10 lg:grid-cols-12 lg:items-center">
+    <div class="lg:col-span-6 space-y-6">
       <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-orange-500/10 text-orange-400 border border-orange-500/30">
         {d.hero.eyebrow}
       </span>
 
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.08]">
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-[1.08]">
         {d.hero.h1Lead}{' '}
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">
           {d.hero.h1Tail}
         </span>
       </h1>
 
-      <p class="text-lg text-zinc-300 leading-relaxed max-w-2xl">
+      <p class="text-base sm:text-lg text-zinc-300 leading-relaxed max-w-xl">
         {d.hero.sub}
       </p>
 
-      <div class="flex flex-wrap items-center gap-3 pt-2">
+      <div class="flex flex-wrap items-center gap-3 pt-1">
         <a
-          href={firefoxHref}
+          href={installUrl}
           class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-orange-500 text-zinc-950 font-bold text-sm hover:bg-orange-400 transition-colors"
         >
-          <span>{d.hero.ctaFirefox}</span>
-          {!AMO_LIVE && (
-            <span class="px-1.5 py-0.5 rounded bg-zinc-950/20 text-[10px] uppercase font-extrabold">
-              {d.hero.soon}
-            </span>
-          )}
-        </a>
-        <a
-          href={`${installUrl}#chromium`}
-          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-zinc-700 bg-zinc-900 text-white font-semibold text-sm hover:border-orange-500 transition-colors"
-        >
-          {d.hero.ctaChrome}
+          <span>{d.hero.ctaInstall}</span>
+          <span aria-hidden="true">→</span>
         </a>
         <a
           href={REPO_URL}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-zinc-800 text-zinc-300 font-semibold text-sm hover:text-white hover:border-zinc-700 transition-colors"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-zinc-700 bg-zinc-900 text-white font-semibold text-sm hover:border-orange-500 transition-colors"
         >
-          ★ {d.hero.ctaGithub}
+          ★ {d.hero.ctaVerify}
         </a>
       </div>
+
+      <ul class="flex flex-wrap gap-x-5 gap-y-2 pt-1 text-xs text-zinc-300">
+        {d.hero.trustPoints.map((pt) => (
+          <li class="inline-flex items-center gap-1.5">
+            <span class="text-emerald-400 font-bold" aria-hidden="true">✓</span>
+            <span>{pt}</span>
+          </li>
+        ))}
+      </ul>
 
       <p class="text-xs text-zinc-500">{d.hero.note}</p>
     </div>
 
-    <div class="mt-12 pt-8 border-t border-zinc-900 flex flex-wrap items-center gap-3">
-      <span class="text-xs uppercase tracking-wider text-zinc-500 font-semibold mr-2">{d.platforms.title}:</span>
-      <a
-        href={path('guideTweets', lang)}
-        class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:border-emerald-400 transition-colors"
-      >
-        X (Twitter) · {d.platforms.live}
-      </a>
-      <a
-        href={path('guideIgComments', lang)}
-        class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:border-emerald-400 transition-colors"
-      >
-        Instagram · {d.platforms.live}
-      </a>
-      <a
-        href={path('guideReddit', lang)}
-        class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:border-emerald-400 transition-colors"
-      >
-        Reddit · {d.platforms.live}
-      </a>
-      <a
-        href={path('guideLinkedin', lang)}
-        class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:border-emerald-400 transition-colors"
-      >
-        LinkedIn · {d.platforms.live}
-      </a>
-      <span class="px-3 py-1 rounded-full text-xs text-zinc-500 border border-zinc-800/80">
-        Bluesky · Threads · Facebook · YouTube ({d.platforms.soon})
-      </span>
+    <div class="lg:col-span-6 space-y-3">
+      <div class="flex items-center justify-between px-1">
+        <span class="text-xs uppercase tracking-wider text-zinc-400 font-semibold">{d.platforms.title}</span>
+        <span class="text-xs text-emerald-400 font-semibold">4 / {d.platforms.live}</span>
+      </div>
+
+      <div class="grid gap-3 sm:grid-cols-2">
+        {d.platforms.cards.map((card) => (
+          <a
+            href={path(card.key, lang)}
+            class="group p-4 rounded-2xl border border-zinc-800 bg-zinc-900/60 hover:border-orange-500/60 hover:bg-zinc-900 transition-colors flex flex-col justify-between gap-3"
+          >
+            <div class="flex items-start gap-3">
+              <span
+                class={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border font-extrabold text-sm ${card.color}`}
+              >
+                {card.badge}
+              </span>
+              <div class="min-w-0 space-y-1">
+                <div class="flex items-center gap-2">
+                  <span class="font-bold text-white text-sm group-hover:text-orange-400 transition-colors">
+                    {card.name}
+                  </span>
+                  <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
+                </div>
+                <p class="text-xs text-zinc-400 leading-relaxed">{card.desc}</p>
+              </div>
+            </div>
+            <div class="text-[11px] font-semibold text-zinc-400 group-hover:text-orange-400 flex items-center justify-between pt-1 border-t border-zinc-800/70">
+              <span>{d.platforms.guideLink}</span>
+              <span aria-hidden="true">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="px-4 py-2.5 rounded-xl border border-zinc-800/80 bg-zinc-900/30 flex items-center justify-between gap-2 flex-wrap text-xs text-zinc-500">
+        <span>{d.platforms.soon}:</span>
+        <span class="text-zinc-400">{d.platforms.soonList}</span>
+      </div>
     </div>
   </div>
 </section>
