@@ -242,14 +242,14 @@ export const en = {
     amoSoon: 'NukeAll is not published on Firefox Add-ons yet. Download the Firefox zip from GitHub Releases and use Option B below.',
     tempTitle: 'Option B — Install from GitHub Releases (about:debugging)',
     tempSteps: [
-      'Download the latest <code>nukeallextension-*-firefox.zip</code> file from GitHub Releases (under Assets).',
+      'Download the latest <code>nukeall-firefox.zip</code> file from GitHub Releases (under Assets).',
       'Type <code>about:debugging#/runtime/this-firefox</code> in the address bar.',
       'Click <strong>Load Temporary Add-on…</strong> and select the downloaded zip file (or <code>manifest.json</code> inside the unzipped folder).',
       'Temporary add-ons are removed when Firefox restarts — repeat these steps until the Firefox Add-ons listing goes live.',
     ],
     chromeTitle: 'Chrome, Edge & Brave',
     chromeSteps: [
-      'Download <code>nukeallextension-*-chrome.zip</code> from the latest GitHub Release (under Assets).',
+      'Download <code>nukeall-chrome.zip</code> from the latest GitHub Release (under Assets).',
       'Unzip it to a folder you will keep (do not delete it afterwards).',
       'Open <code>chrome://extensions</code> — or <code>edge://extensions</code> / <code>brave://extensions</code>.',
       'Turn on <strong>Developer mode</strong> (toggle in the top-right, or bottom-left in Edge).',

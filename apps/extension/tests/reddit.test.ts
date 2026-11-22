@@ -11,11 +11,11 @@ import { parseRedditCsvArchive } from '../src/adapters/reddit/archive';
 
 describe('reddit adapter', () => {
   it('plans automatic Reddit profile navigation steps', () => {
-    expect(planRedditScanSteps('u/efe_dev', ['comment'])).toEqual([
-      { url: 'https://www.reddit.com/user/efe_dev/comments/', type: 'comment' },
+    expect(planRedditScanSteps('u/demo_user', ['comment'])).toEqual([
+      { url: 'https://www.reddit.com/user/demo_user/comments/', type: 'comment' },
     ]);
-    expect(planRedditScanSteps('efe_dev', ['post'])).toEqual([
-      { url: 'https://www.reddit.com/user/efe_dev/submitted/', type: 'post' },
+    expect(planRedditScanSteps('demo_user', ['post'])).toEqual([
+      { url: 'https://www.reddit.com/user/demo_user/submitted/', type: 'post' },
     ]);
   });
 
@@ -116,14 +116,14 @@ describe('reddit adapter', () => {
   });
 
   it('detects handle from user profile paths and parses Shreddit & Old Reddit DOM', () => {
-    expect(detectRedditHandleFromPath('/user/efe_dev/comments/')).toBe('efe_dev');
+    expect(detectRedditHandleFromPath('/user/demo_user/comments/')).toBe('demo_user');
     expect(detectRedditHandleFromPath('/u/alice/submitted/')).toBe('alice');
     expect(detectRedditHandleFromPath('/user/me/')).toBe('');
 
     const shredditHtml = parseHTML(`<!doctype html><html><body>
       <shreddit-profile-comment
         comment-id="t1_c111"
-        author="efe_dev"
+        author="demo_user"
         subreddit-prefixed-name="r/privacy"
         score="7"
         created-timestamp="2025-02-01T12:00:00Z"
@@ -136,7 +136,7 @@ describe('reddit adapter', () => {
       </shreddit-profile-comment>
       <shreddit-post
         id="t3_p222"
-        author="efe_dev"
+        author="demo_user"
         post-title="My Shreddit Post"
         subreddit-prefixed-name="r/turkey"
         score="19"
@@ -149,7 +149,7 @@ describe('reddit adapter', () => {
 
     const shredditComments = parseVisibleRedditDom(
       'comment',
-      'efe_dev',
+      'demo_user',
       shredditHtml.document as unknown as Document,
     );
     expect(shredditComments).toHaveLength(1);
@@ -163,7 +163,7 @@ describe('reddit adapter', () => {
 
     const shredditPosts = parseVisibleRedditDom(
       'post',
-      'efe_dev',
+      'demo_user',
       shredditHtml.document as unknown as Document,
     );
     expect(shredditPosts).toHaveLength(1);
@@ -175,20 +175,20 @@ describe('reddit adapter', () => {
     });
 
     const oldHtml = parseHTML(`<!doctype html><html><body>
-      <div class="thing comment" data-fullname="t1_old9" data-author="efe_dev" data-subreddit="linux">
+      <div class="thing comment" data-fullname="t1_old9" data-author="demo_user" data-subreddit="linux">
         <a class="bylink" href="/r/linux/comments/x/y/old9/">permalink</a>
         <div class="usertext-body"><div class="md">Old reddit comment</div></div>
       </div>
-      <div class="thing link self" data-fullname="t3_oldp1" data-author="efe_dev" data-subreddit="selfhosted" data-permalink="/r/selfhosted/comments/oldp1/hi/">
+      <div class="thing link self" data-fullname="t3_oldp1" data-author="demo_user" data-subreddit="selfhosted" data-permalink="/r/selfhosted/comments/oldp1/hi/">
         <a class="title">Old reddit post</a>
       </div>
     </body></html>`);
 
     expect(
-      parseVisibleRedditDom('comment', 'efe_dev', oldHtml.document as unknown as Document),
+      parseVisibleRedditDom('comment', 'demo_user', oldHtml.document as unknown as Document),
     ).toMatchObject([{ id: 't1_old9', text: 'Old reddit comment', source: 'r/linux' }]);
     expect(
-      parseVisibleRedditDom('post', 'efe_dev', oldHtml.document as unknown as Document),
+      parseVisibleRedditDom('post', 'demo_user', oldHtml.document as unknown as Document),
     ).toMatchObject([{ id: 't3_oldp1', text: 'Old reddit post', source: 'r/selfhosted' }]);
   });
 });

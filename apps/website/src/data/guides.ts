@@ -55,7 +55,7 @@ export const guides: Record<GuideKey, Record<Lang, GuideLocaleContent>> = {
         },
         {
           title: 'Date Range & Keyword Filters',
-          body: 'Select From / To dates, use one-click > 30d, > 6m or > 1y presets, or flag old profanity, phone numbers and IBANs locally before deleting.',
+          body: 'Select From / To dates, use one-click > 30d, > 6m or > 1y presets, or flag posts containing profanity (EN + TR) locally before deleting.',
         },
         {
           title: 'Protect Important Posts',
@@ -113,8 +113,8 @@ export const guides: Record<GuideKey, Record<Lang, GuideLocaleContent>> = {
           body: 'Canlı zaman çizelgesi yaklaşık 3.200 öğeyle sınırlıdır. Resmi X arşivindeki tweets.js veya like.js dosyasını yükleyerek yıllar öncesini silebilirsin.',
         },
         {
-          title: 'Tarih Seçici & Yerel Risk Taraması',
-          body: 'Başlangıç/bitiş tarihi seç veya > 30 gün / > 6 ay / > 1 yıl butonlarını kullan; küfür, telefon, IBAN ve TCKN içeren eski gönderileri yerelde tespit et.',
+          title: 'Tarih Seçici & Küfür Filtresi',
+          body: 'Başlangıç/bitiş tarihi seç veya > 30 gün / > 6 ay / > 1 yıl butonlarını kullan; İngilizce ve Türkçe küfür içeren eski gönderileri yerelde tespit et.',
         },
         {
           title: 'Önemli Gönderileri Koru',

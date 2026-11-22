@@ -13,7 +13,8 @@
     "typecheck": "npm run typecheck -w apps/extension",
     "check:licenses": "node scripts/check-licenses.mjs",
     "check:network": "node scripts/check-network.mjs",
-    "check:seo": "node scripts/check-seo.mjs"
+    "check:seo": "node scripts/check-seo.mjs",
+    "package:release": "node scripts/stage-release.mjs"
   },
   "engines": {
     "node": ">=20"

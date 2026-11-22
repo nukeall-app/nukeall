@@ -237,14 +237,14 @@ export const tr: Dict = {
     amoSoon: 'Eklenti henüz Firefox Add-ons mağazasında yayınlanmadı. Şimdilik hemen aşağıdaki GitHub Releases adımlarıyla kurabilirsin.',
     tempTitle: 'GitHub Releases ile Kurulum (about:debugging)',
     tempSteps: [
-      'GitHub Releases’daki (Assets altında) en güncel <code>nukeallextension-*-firefox.zip</code> dosyasını indir.',
+      'GitHub Releases’daki (Assets altında) en güncel <code>nukeall-firefox.zip</code> dosyasını indir.',
       'Adres çubuğuna <code>about:debugging#/runtime/this-firefox</code> yaz.',
       '<strong>Geçici Eklenti Yükle…</strong> butonuna tıkla ve indirdiğin zip dosyasını (veya açtığın klasördeki <code>manifest.json</code> dosyasını) seç.',
       'Geçici eklentiler Firefox kapanınca kaldırılır — Add-ons mağaza yayını açılana kadar açılışta bu adımla kolayca yükleyebilirsin.',
     ],
     chromeTitle: 'Chrome, Edge ve Brave',
     chromeSteps: [
-      'En güncel GitHub Release’den (Assets altında) <code>nukeallextension-*-chrome.zip</code> dosyasını indir.',
+      'En güncel GitHub Release’den (Assets altında) <code>nukeall-chrome.zip</code> dosyasını indir.',
       'Silmeyeceğin kalıcı bir klasöre çıkar.',
       '<code>chrome://extensions</code> — veya <code>edge://extensions</code> / <code>brave://extensions</code> sayfasını aç.',
       '<strong>Geliştirici modu</strong> anahtarını aç (sağ üstte veya Edge’de sol altta).',

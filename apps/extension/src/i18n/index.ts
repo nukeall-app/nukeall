@@ -157,12 +157,6 @@ export interface UiDict {
   };
   risk: {
     profanity: string;
-    email: string;
-    phone: string;
-    iban: string;
-    tckn: string;
-    card: string;
-    late_night: string;
     custom: string;
   };
   popup: {
@@ -270,7 +264,7 @@ export const enUi: UiDict = {
     mediaAny: 'Any',
     mediaWith: 'With media',
     mediaWithout: 'Text only',
-    onlyRisky: 'Only flagged risky items',
+    onlyRisky: 'Only posts with profanity',
     keepPinned: 'Keep pinned posts',
     minLikes: 'Keep if likes ≥',
     keepTag: 'Keep text containing',
@@ -337,12 +331,6 @@ export const enUi: UiDict = {
   },
   risk: {
     profanity: 'Profanity',
-    email: 'Email',
-    phone: 'Phone',
-    iban: 'IBAN',
-    tckn: 'TC ID',
-    card: 'Card',
-    late_night: 'Late night',
     custom: 'Keyword',
   },
   popup: {
@@ -450,7 +438,7 @@ export const trUi: UiDict = {
     mediaAny: 'Hepsi',
     mediaWith: 'Medyalı',
     mediaWithout: 'Sadece metin',
-    onlyRisky: 'Sadece riskli işaretlenenler',
+    onlyRisky: 'Sadece küfür içerenler',
     keepPinned: 'Sabitlenenleri koru',
     minLikes: 'Beğenisi ≥ ise koru',
     keepTag: 'Bu kelime varsa koru',
@@ -517,12 +505,6 @@ export const trUi: UiDict = {
   },
   risk: {
     profanity: 'Küfür',
-    email: 'E-posta',
-    phone: 'Telefon',
-    iban: 'IBAN',
-    tckn: 'TC Kimlik',
-    card: 'Kart No',
-    late_night: 'Gece saati',
     custom: 'Kelime',
   },
   popup: {

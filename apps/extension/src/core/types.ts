@@ -42,7 +42,7 @@ export interface ContentItem {
   meta?: Record<string, unknown>;
 }
 
-export type RiskKind = 'profanity' | 'email' | 'phone' | 'iban' | 'tckn' | 'card' | 'late_night' | 'custom';
+export type RiskKind = 'profanity' | 'custom';
 
 export interface RiskHit {
   kind: RiskKind;

@@ -73,7 +73,7 @@ describe('x graphql parser & scan planner', () => {
                                           user_results: {
                                             result: {
                                               rest_id: '123',
-                                              core: { screen_name: 'efe' },
+                                              core: { screen_name: 'demo_handle' },
                                             },
                                           },
                                         },
@@ -108,28 +108,28 @@ describe('x graphql parser & scan planner', () => {
     const raws = extractTimelineTweets(mockResponse);
     expect(raws).toHaveLength(2);
 
-    const mine = rawToContentItems(raws, 'tweets', { id: '', handle: 'efe' });
+    const mine = rawToContentItems(raws, 'tweets', { id: '', handle: 'demo_handle' });
     expect(mine).toHaveLength(1);
     expect(mine[0]).toMatchObject({
       id: '501',
       type: 'reply',
       text: '@someone_else My reply comment here',
-      url: 'https://x.com/efe/status/501',
+      url: 'https://x.com/demo_handle/status/501',
     });
   });
 
   it('plans automatic X navigation URLs based on selected content types', () => {
-    expect(planXScanSteps('@efe', ['reply'])).toEqual([
-      { url: 'https://x.com/efe/with_replies', kind: 'tweets', types: ['reply'] },
+    expect(planXScanSteps('@demo_handle', ['reply'])).toEqual([
+      { url: 'https://x.com/demo_handle/with_replies', kind: 'tweets', types: ['reply'] },
     ]);
 
-    expect(planXScanSteps('efe', ['post', 'repost'])).toEqual([
-      { url: 'https://x.com/efe', kind: 'tweets', types: ['post', 'repost'] },
+    expect(planXScanSteps('demo_handle', ['post', 'repost'])).toEqual([
+      { url: 'https://x.com/demo_handle', kind: 'tweets', types: ['post', 'repost'] },
     ]);
 
-    expect(planXScanSteps('efe', ['reply', 'like', 'bookmark'])).toEqual([
-      { url: 'https://x.com/efe/with_replies', kind: 'tweets', types: ['reply'] },
-      { url: 'https://x.com/efe/likes', kind: 'likes', types: ['like'] },
+    expect(planXScanSteps('demo_handle', ['reply', 'like', 'bookmark'])).toEqual([
+      { url: 'https://x.com/demo_handle/with_replies', kind: 'tweets', types: ['reply'] },
+      { url: 'https://x.com/demo_handle/likes', kind: 'likes', types: ['like'] },
       { url: 'https://x.com/i/bookmarks', kind: 'bookmarks', types: ['bookmark'] },
     ]);
   });

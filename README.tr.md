@@ -1,34 +1,43 @@
 # NukeAll (Türkçe)
 
-[English](README.md) · [Web Sitesi](https://nukeall.app/tr/) · [Gizlilik](PRIVACY.md) · [Destek Ol](https://nukeall.app/tr/destek/)
+[English](README.md) · [Web Sitesi](https://nukeall.pages.dev/tr/) · [Kurulum Rehberi](https://nukeall.pages.dev/tr/kurulum/) · [Gizlilik](PRIVACY.md) · [Destek Ol](https://nukeall.pages.dev/tr/destek/)
 
-**Ücretsiz, açık kaynak (`GPL-3.0-or-later`), %100 yerel sosyal medya geçmişi temizleyici.**
+**Ücretsiz, açık kaynak (`GPL-3.0-or-later`), %100 tarayıcında çalışan sosyal medya geçmişi temizleyici.**
 
-NukeAll; **yalnızca kendi** gönderi, yanıt, yorum, beğeni, repost ve yer imlerini doğrudan tarayıcının içinde toplu olarak siler — sunucusuz, üyeliksiz, telemetrisiz ve ücretli limit olmadan.
+NukeAll; **yalnızca kendi** gönderi, yanıt, yorum, beğeni, repost, yer imi ve giden sohbet (DM) mesajlarını doğrudan tarayıcının içinde toplu olarak siler — **sunucu yok, şifre istemez, takip yok ve ücretli sınır yok**.
 
-## Özellikler (X, Instagram, Reddit ve LinkedIn Hazır)
+## Desteklenen Platformlar ve Özellikler
 
-- **Sınırsız ve ücretsiz:** 30 gün sınırı, kredi veya abonelik yok.
-- **X (Twitter):** Seçilen türe göre Yanıtlar, Beğeniler, Yer İmleri veya Profile otomatik gider; pasif GraphQL okuyucu + çalışma zamanı queryId keşfi + DOM yedeği + `tweets.js`/`like.js` arşiv içe aktarma.
-- **Instagram:** Hareketlerin (Yorumlar, Beğeniler, Gönderiler) sayfalarına ve Direct sohbetlerde yalnızca kendi gönderdiğin mesajları geri almaya (unsend) otomatik gider; oturum API + pasif Bloks/GraphQL okuyucu + shortcode-mediaId dönüşümü + DOM yedeği + Türkçe karakter düzeltmeli JSON arşiv içe aktarma.
-- **Reddit:** Yorumlar/Gönderiler geçmişine otomatik gider; silmeden önce **çok geçişli üzerine yazma (0–3 tur)** (rastgele veya özel metin + yalnızca üzerine yazma modu) ve `comments.csv`/`posts.csv` arşiv içe aktarma.
-- **LinkedIn:** `/in/<handle>/recent-activity/{all,comments,reactions}/` sayfalarına otomatik gider; 64-bit Snowflake URN'lerden (`BigInt >> 22n`) kesin oluşturma tarihini çözer, göreceli TR/EN tarihleri yorumlar, `Shares.csv`/`Comments.csv`/`Reactions.csv` arşivlerini destekler ve güvenli DOM tıklama otomasyonu kullanır.
-- **Tek tür tarama:** Bozulmaları önlemek için her taramada tek bir içerik türü seçilir.
-- **Tarih seçici ve İnceleme ızgarası:** İncele & Sil ekranında doğrudan takvim (`Başlangıç`/`Bitiş`) veya tek tık kısayollar (`30 g+`, `6 ay+`, `1 yıl+`, `Sıfırla`) ile eski gönderileri daralt; kelime, regex, medya, risk veya beğeni/sabitlenme koruması uygula.
-- **Yerel risk taraması:** EN + TR küfür listesi, e-posta, telefon, IBAN, sağlama kontrollü TC Kimlik No, Luhn kontrollü kart numarası ve gece saati (01:00–05:00) tespiti.
-- **Manuel yedek ve raporlar:** İsteğe bağlı tek tıkla JSON/CSV yedek, tek dosya çevrimdışı HTML arşiv, 10 saniyelik iptal süresi, kaldığı yerden devam ve HTML/JSON silme raporu.
-- **Çift dil:** Türkçe ve İngilizce arayüz, karanlık ve aydınlık tema.
+- **Tamamen ücretsiz ve sınırsız:** 30 gün sınırı, günlük kota veya abonelik yok.
+- **X (Twitter):** Eski tweet, yanıt, beğeni, repost ve yer imlerini otomatik olarak temizler; yıllar öncesindeki paylaşımlar için resmi X veri arşivini de destekler.
+- **Instagram:** Eski yorum, beğeni ve gönderileri siler; sohbetlerde **yalnızca kendi gönderdiğin** DM mesajlarının gönderimini geri alır (`unsend`) ve resmi Instagram veri indirmesini sorunsuz işler.
+- **Reddit:** Silmeden önce yorum ve gönderilerin üzerine **0–3 tur** rastgele veya belirlediğin metni yazarak eski cümlelerinin kalmamasını sağlar; resmi Reddit veri arşiviyle çok eski geçmişe de ulaşır.
+- **LinkedIn:** Yeni paylaşımlarına dokunmadan takvimden tarih seçerek (veya tek tıkla `30 gün+`, `6 ay+`, `1 yıl+`) eski gönderi, yorum ve beğenilerini temizler; LinkedIn veri arşivini de destekler.
+- **Çevrimdışı küfür filtresi:** İstersen silmeden önce İngilizce ve Türkçe küfür kelimelerini (veya kendi eklediğin kelimeleri) tarayıcının içinde otomatik işaretler.
+- **Onay ekranı ve korumalar:** Sen onay vermeden hiçbir şey silinmez; sabitlenen, çok beğeni alan veya koruma kelimesi içeren paylaşımlar otomatik hariç tutulur.
+- **Kişisel yedek ve özet:** İstersen silmeden önce bilgisayarında aranabilir kişisel bir yedek ve işlem sonunda temizlik özeti saklayabilirsin.
+- **Hesap dostu hız:** İnsansı gecikmeler, platform uyardığında otomatik bekleme ve tarayıcı kapansa bile kaldığı yerden devam etme özelliği.
+- **Çift dil ve tema:** Tam Türkçe / İngilizce arayüz, karanlık ve aydınlık tema.
+
+## İndirme ve Kurulum
+
+Chrome ve Firefox paketleri doğrudan **[GitHub Releases](https://github.com/nukeall-app/nukeall/releases/latest)** sayfasındaki **Assets** bölümünde (`SHA256SUMS.txt` doğrulama dosyasıyla birlikte) paylaşılır:
+
+- **Chrome / Edge / Brave:** `nukeall-chrome.zip` dosyasını indirip klasöre çıkar, `chrome://extensions` üzerinden **Geliştirici modu**nu aç ve **Paketlenmemiş öğe yükle** ile klasörü seç.
+- **Firefox:** Eklenti henüz Firefox Add-ons mağazasında yayında değil. `nukeall-firefox.zip` dosyasını indirip `about:debugging#/runtime/this-firefox` sayfasından **Geçici Eklenti Yükle…** ile yükleyebilirsin.
+- Adım adım görsel rehber: **[nukeall.pages.dev/tr/kurulum/](https://nukeall.pages.dev/tr/kurulum/)**
 
 ## Gizlilik Garantisi
 
-- Eklenti CSP politikası `connect-src 'self'` uygular.
-- İzinler yalnızca temizlenen platformlarla (`x.com`, `twitter.com`, `instagram.com`, `reddit.com`, `linkedin.com`) sınırlıdır.
-- `npm run check:network` CI testi derlenmiş eklenti çıktısında izin dışı URL bulursa build'i kırar; `npm run check:licenses` ise `GPL-3.0-or-later` lisans uyumluluğunu doğrular.
+- Şifre, iki adımlı doğrulama kodu veya API anahtarı asla istenmez — zaten açık olan tarayıcı sekmenle çalışır.
+- Tarayıcı güvenlik izinleri yalnızca desteklenen platformlarla (`x.com`, `twitter.com`, `instagram.com`, `reddit.com`, `linkedin.com`) sınırlıdır.
+- Eklenti içinde hiçbir analiz, telemetri veya dış sunucu bağlantısı bulunmaz (her derlemede otomatik `npm run check:network` testiyle doğrulanır).
+- Tüm açık kaynak bağımlılıklar CI ortamında `npm run check:licenses` ile denetlenir.
 
 ## Katkı ve Marka Yönetişimi
 
-- Pull Request açan katkıcılar projenin uzun vadeli sürdürülebilirliği için [CLA.md](CLA.md) metnini onaylar ([`cla-signatures.json`](cla-signatures.json)).
-- NukeAll adı, simgeleri ve `nukeall.app` alan adı kullanım koşulları [TRADEMARK.md](TRADEMARK.md) dosyasında tanımlıdır.
+- Pull Request açan katkıcılar [CLA.md](CLA.md) sözleşmesini onaylar ([`cla-signatures.json`](cla-signatures.json)).
+- NukeAll adı ve marka hakları [TRADEMARK.md](TRADEMARK.md) dosyasında tanımlıdır.
 
 ## Sorumluluk Reddi
 

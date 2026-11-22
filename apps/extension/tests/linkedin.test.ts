@@ -13,12 +13,12 @@ import { DEFAULT_FILTERS } from '../src/core/types';
 
 describe('linkedin adapter', () => {
   it('detects handle and plans LinkedIn activity scan steps', () => {
-    expect(detectLinkedInHandleFromPath('/in/efe-dev/recent-activity/all/')).toBe('efe-dev');
+    expect(detectLinkedInHandleFromPath('/in/sample-user/recent-activity/all/')).toBe('sample-user');
     expect(detectLinkedInHandleFromPath('/in/me/')).toBe('');
-    expect(planLinkedInScanSteps('https://www.linkedin.com/in/efe-dev/', ['post', 'comment', 'like'])).toEqual([
-      { url: 'https://www.linkedin.com/in/efe-dev/recent-activity/all/', type: 'post' },
-      { url: 'https://www.linkedin.com/in/efe-dev/recent-activity/comments/', type: 'comment' },
-      { url: 'https://www.linkedin.com/in/efe-dev/recent-activity/reactions/', type: 'like' },
+    expect(planLinkedInScanSteps('https://www.linkedin.com/in/sample-user/', ['post', 'comment', 'like'])).toEqual([
+      { url: 'https://www.linkedin.com/in/sample-user/recent-activity/all/', type: 'post' },
+      { url: 'https://www.linkedin.com/in/sample-user/recent-activity/comments/', type: 'comment' },
+      { url: 'https://www.linkedin.com/in/sample-user/recent-activity/reactions/', type: 'like' },
     ]);
   });
 
@@ -80,7 +80,7 @@ describe('linkedin adapter', () => {
     const urn = `urn:li:activity:${(BigInt(postMs) << 22n).toString()}`;
     const { document: doc } = parseHTML(`
       <html><body>
-        <nav><a class="global-nav__primary-link" href="/in/efe-privacy/">Profile</a></nav>
+        <nav><a class="global-nav__primary-link" href="/in/demo-privacy/">Profile</a></nav>
         <div class="feed-shared-update-v2" data-urn="${urn}">
           <div class="update-components-text"><span class="break-words">Old post about cloud migrations</span></div>
           <img class="update-components-image__image" src="/media.jpg" />
@@ -89,7 +89,7 @@ describe('linkedin adapter', () => {
     `);
 
     const domDoc = doc as unknown as Document;
-    expect(detectLinkedInHandleFromDom(domDoc, '/feed/')).toBe('efe-privacy');
+    expect(detectLinkedInHandleFromDom(domDoc, '/feed/')).toBe('demo-privacy');
 
     const parsed = parseVisibleLinkedInDom(domDoc, 'post');
     expect(parsed).toHaveLength(1);

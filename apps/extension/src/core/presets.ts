@@ -35,8 +35,8 @@ export const BUILTIN_PRESETS: Preset[] = [
     id: 'job_hunt',
     nameEn: 'Before a Job Search',
     nameTr: 'İş Başvurusu Öncesi',
-    descEn: 'Targets risky posts (profanity, personal data, late-night) while keeping pinned and popular posts.',
-    descTr: 'Küfür, kişisel veri ve gece saatindeki paylaşımları hedefler; sabitlenen ve popüler gönderileri korur.',
+    descEn: 'Targets posts containing profanity while keeping pinned and popular posts.',
+    descTr: 'Küfür içeren gönderileri hedefler; sabitlenen ve popüler gönderileri korur.',
     filters: {
       ...DEFAULT_FILTERS,
       types: ['post', 'reply', 'quote', 'comment'],

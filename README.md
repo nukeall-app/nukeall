@@ -1,30 +1,38 @@
 # NukeAll
 
-[Türkçe](README.tr.md) · [Website](https://nukeall.app) · [Privacy](PRIVACY.md) · [Sponsor](https://nukeall.app/sponsor/)
+[Türkçe](README.tr.md) · [Website](https://nukeall.pages.dev/) · [Install Guide](https://nukeall.pages.dev/install/) · [Privacy](PRIVACY.md) · [Sponsor](https://nukeall.pages.dev/sponsor/)
 
 **Free, open-source (`GPL-3.0-or-later`), 100% local social media history cleaner.**
 
-NukeAll bulk-deletes **your own** posts, replies, comments, likes, reposts and bookmarks directly inside your browser — with zero servers, zero accounts, zero telemetry, and no paywalled limits.
+NukeAll bulk-deletes **your own** old posts, replies, comments, likes, reposts, bookmarks and sent Direct messages directly inside your browser — with **zero servers, zero passwords, zero tracking, and no paywalls**.
 
-## Features (X, Instagram, Reddit & LinkedIn Live)
+## Supported Platforms & Features
 
-- **Unlimited & free:** No 30-day cap, no daily paywall, no credits.
-- **X (Twitter):** Auto-navigates to Replies, Likes, Bookmarks or Profile; passive GraphQL reader + runtime queryId discovery + DOM fallback + `tweets.js`/`like.js` archive import.
-- **Instagram:** Auto-navigates to Your Activity (Comments, Likes, Posts) plus Direct Chat (unsend your own sent DM messages); session API + passive Bloks/GraphQL reader + shortcode-to-mediaId decoding + DOM fallback + JSON archive import (with Turkish UTF-8 mojibake fix).
-- **Reddit:** Auto-navigates to your comments/submitted history; **multi-pass overwrite (0–3 passes)** with random or custom text (plus edit-only mode) before deleting + `comments.csv`/`posts.csv` archive import.
-- **LinkedIn:** Auto-navigates to `/in/<handle>/recent-activity/{all,comments,reactions}/`; decodes exact creation dates from 64-bit Snowflake URNs (`BigInt >> 22n`) + relative EN/TR timestamps + `Shares.csv`/`Comments.csv`/`Reactions.csv` archive import + safe human-paced DOM click automation.
-- **Single-type scan picker:** Select one content type per scan for maximum stability.
-- **Date Picker & Review grid:** Pick `From` / `To` calendar dates or one-click age chips (`> 30d`, `> 6m`, `> 1y`, `Clear`) right in Review Grid; filter by keywords, regex, media, or risk flags; protect pinned or high-engagement posts and `#keep` tags.
-- **Offline local risk scan:** Flags EN + TR profanity, emails, phone numbers, IBANs, validated Turkish ID numbers (TCKN), Luhn-checked card numbers, and late-night posts (01:00–05:00) — zero AI downloads.
-- **Manual backups & reports:** Optional one-click JSON/CSV backup, single-file searchable offline HTML archive, 10-second cancel countdown, crash-resilient checkpoints, and downloadable HTML/JSON deletion reports.
-- **Bilingual UI:** English & Turkish (`EN` / `TR`), dark & light themes.
+- **Completely free & unlimited:** No 30-day limits, no daily paywalls, no credits.
+- **X (Twitter):** Clean old tweets, replies, likes, reposts and bookmarks automatically, or upload your official X data download to clear history from years ago.
+- **Instagram:** Remove old comments, likes and posts automatically, unsend only **your own** messages in Direct chats, or import your official Instagram data export cleanly.
+- **Reddit:** Overwrite comments and text posts **0–3 times** with random or custom text before deleting so old words don't linger, plus import your official Reddit data download for deep history.
+- **LinkedIn:** Pick exact calendar dates (or one click for `> 30d`, `> 6m`, `> 1y`) to delete old posts, comments and likes safely before a career move, or import your LinkedIn archive.
+- **Offline profanity filter:** Automatically flag posts containing profanity (English + Turkish word lists) or custom keywords inside your browser before deleting.
+- **Review screen & protections:** Search and check/uncheck items before anything is touched; protect pinned or popular posts and keep tags.
+- **Personal backups & summaries:** Optionally save a readable personal copy (including a single-file offline web page you can search anytime) and view a summary of what was cleaned.
+- **Account-safe pacing:** Randomized delays, automatic cooldowns when a platform asks to slow down, daily safety caps and automatic resume if interrupted.
+- **Bilingual interface:** Full English and Turkish support with dark and light themes.
+
+## Download & Install
+
+NukeAll currently ships directly via **[GitHub Releases](https://github.com/nukeall-app/nukeall/releases/latest)** (both Chrome and Firefox packages are included under **Assets** with `SHA256SUMS.txt` checksums):
+
+- **Chrome / Edge / Brave:** Download `nukeall-chrome.zip`, unzip it, open `chrome://extensions`, enable **Developer mode**, and click **Load unpacked**.
+- **Firefox:** Firefox Add-ons store listing is not live yet. Download `nukeall-firefox.zip`, open `about:debugging#/runtime/this-firefox`, and click **Load Temporary Add-on…**.
+- Step-by-step instructions: **[nukeall.pages.dev/install/](https://nukeall.pages.dev/install/)**
 
 ## Privacy Guarantee
 
-- Extension CSP enforces `connect-src 'self'`.
-- Network permissions are strictly limited to supported social platforms (`x.com`, `twitter.com`, `instagram.com`, `reddit.com`, `linkedin.com`).
-- `npm run check:network` runs in CI to fail builds if any unknown external URL appears in compiled extension bundles.
-- `npm run check:licenses` audits dependencies in CI for `GPL-3.0-or-later` compatibility.
+- Never asks for your password, 2FA code, or API keys — works directly inside your existing signed-in browser tab.
+- Network access is strictly locked by browser permissions and Content Security Policy to your chosen social platforms (`x.com`, `twitter.com`, `instagram.com`, `reddit.com`, `linkedin.com`).
+- Zero telemetry, zero analytics, zero external servers in the extension — automatically verified on every build via `npm run check:network`.
+- Open-source `GPL-3.0-or-later` dependencies are audited in CI via `npm run check:licenses`.
 
 ## Development
 
@@ -37,18 +45,17 @@ npm run build
 npm run lint:firefox -w apps/extension
 npm run check:network
 npm run check:seo
+npm run package:release
 ```
-
-Load unpacked in Chromium from `apps/extension/.output/chrome-mv3`, or temporary add-on in Firefox (`about:debugging`) from `apps/extension/.output/firefox-mv3/manifest.json`.
 
 ## Governance & Legal
 
-- Contributors accept [CLA.md](CLA.md) so the project remains relicensable and transferable to long-term privacy-aligned stewardship ([`cla-signatures.json`](cla-signatures.json)).
-- Brand names, icons and `nukeall.app` are governed separately under [TRADEMARK.md](TRADEMARK.md).
+- Contributors accept [CLA.md](CLA.md) ([`cla-signatures.json`](cla-signatures.json)).
+- Brand names and marks are governed by [TRADEMARK.md](TRADEMARK.md).
 
 ## Disclaimer
 
-Platforms discourage fast automation in their Terms of Service. Keep the default **Safe** speed and daily safety limit enabled. Use at your own risk. Not affiliated with X Corp, Meta, Reddit or LinkedIn.
+Platforms discourage rapid automation in their Terms of Service. Keep the default **Safe** speed and daily safety limit enabled. Use at your own risk. Not affiliated with X Corp, Meta, Reddit or LinkedIn.
 
 ## License
 

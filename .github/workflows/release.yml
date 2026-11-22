@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -19,16 +20,19 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check:licenses
+      - run: npm run typecheck
       - run: npm test
       - run: npm run zip -w apps/extension
       - run: npm run zip:firefox -w apps/extension
+      - run: npm run lint:firefox -w apps/extension
       - run: npm run check:network
-      - name: Generate SHA256 checksums
-        run: cd apps/extension/.output && sha256sum *.zip *.xpi > SHA256SUMS.txt
+      - run: npm run package:release
       - name: Upload GitHub Release assets
         uses: softprops/action-gh-release@v2
         with:
+          generate_release_notes: true
           files: |
-            apps/extension/.output/*.zip
-            apps/extension/.output/*.xpi
-            apps/extension/.output/SHA256SUMS.txt
+            apps/extension/.output/release/nukeall-chrome.zip
+            apps/extension/.output/release/nukeall-firefox.zip
+            apps/extension/.output/release/nukeall-sources.zip
+            apps/extension/.output/release/SHA256SUMS.txt
