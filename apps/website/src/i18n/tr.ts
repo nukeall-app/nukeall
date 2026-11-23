@@ -10,9 +10,9 @@ export const tr: Dict = {
         'Instagram tüm yorumları silme, Reddit tüm postları ve yorumları üzerine yazıp silme, Twitter (X) tüm tweet ve beğenileri silme, eski LinkedIn gönderilerini kaldırma eklentisi. %100 yerel, ücretsiz.',
     },
     install: {
-      title: 'NukeAll Kurulum — Chrome, Firefox, Edge ve Brave 1 Dakikada Kur',
+      title: 'NukeAll Kurulum — Chrome, Firefox, Edge, Brave ve Android Telefon Rehberi',
       description:
-        'Ücretsiz sosyal medya temizleyici NukeAll’u Chrome, Edge, Brave ve Firefox tarayıcılarına adım adım kurma rehberi.',
+        'Ücretsiz sosyal medya temizleyici NukeAll’u masaüstü (Chrome, Firefox, Edge, Brave) ve Android telefon tarayıcılarına (Kiwi, Lemur, Edge Android) kurma rehberi.',
     },
     faq: {
       title: 'NukeAll SSS — Hesap Güvenliği, Ban Riski ve Toplu Silme Nasıl Çalışır?',
@@ -321,7 +321,7 @@ export const tr: Dict = {
   },
   install: {
     h1: 'NukeAll Kurulumu',
-    intro: 'NukeAll; Firefox, Chrome, Edge ve Brave üzerinde çalışır. Aşağıdan tarayıcını seç — kurulum yaklaşık bir dakika sürer.',
+    intro: 'NukeAll; masaüstü tarayıcılarda (Firefox, Chrome, Edge, Brave) ve uyumlu Android tarayıcılarda çalışır. Cihazına göre aşağıdaki adımları izle — kurulum yaklaşık 1 dakika sürer.',
     firefoxTitle: 'Firefox',
     amoTitle: 'Seçenek B — Firefox Add-ons (mağaza yayını açılınca)',
     amoSteps: [
@@ -347,6 +347,24 @@ export const tr: Dict = {
       'NukeAll’u sabitle ve simgeye tıklayıp yan paneli aç.',
     ],
     devNote: 'Chromium başlangıçta “geliştirici modu uzantıları” uyarısı gösterebilir. Chrome Web Mağazası dışından kurulan açık kaynak eklentiler için bu normaldir.',
+    mobileAnchor: 'Android (Telefon)',
+    mobileTitle: 'Android (Telefondan Kullanım)',
+    mobileBadge: 'Android’de Çalışır',
+    mobileChromiumTitle: 'Kiwi Browser, Lemur Browser ve Edge Android (Hemen Kullan)',
+    mobileChromiumSteps: [
+      'Android telefonuna <strong>Kiwi Browser</strong>, <strong>Lemur Browser</strong> veya <strong>Microsoft Edge</strong> kur ve tarayıcının Uzantılar (Extensions) sayfasını aç.',
+      'En güncel GitHub Release sayfasındaki Assets altından <code>nukeall-chrome.zip</code> dosyasını telefonuna indir.',
+      'Uzantılar sayfasında <strong>Geliştirici modu</strong>nu aç; <strong>+ (from .zip/.crx/.user.js)</strong> (veya klasör seçimi) üzerinden indirdiğin <code>nukeall-chrome.zip</code> dosyasını yükle.',
+      'Aynı tarayıcıda x.com, instagram.com, reddit.com veya linkedin.com adresine girip oturum aç, ardından Uzantılar menüsünden NukeAll’a dokun. Mobilde masaüstündeki yan panel olmadığı için NukeAll arayüzü otomatik olarak tam ekran yeni sekmede açılır.',
+    ],
+    mobileFirefoxTitle: 'Firefox for Android (Mağaza yayını açılınca)',
+    mobileFirefoxBody:
+      'NukeAll yakında <strong>addons.mozilla.org</strong> üzerinde yayınlandığında Android Firefox kullanıcıları eklentiyi tek tıkla kurabilecek; arayüz mobilde de otomatik tam ekran sekmede sorunsuz açılacak şekilde ayarlıdır.',
+    mobileNoticeTitle: 'Standart Google Chrome (Android) ve iPhone Notu',
+    mobileNoticeLines: [
+      'Resmi <strong>Standart Google Chrome (Android)</strong> uygulaması eklenti desteklemiyor — telefonda kullanmak için Kiwi Browser, Lemur Browser veya Edge Android tercih et.',
+      '<strong>iPhone / iPad (iOS)</strong> tarayıcıları Chrome/Firefox <code>.zip</code> eklenti paketlerini desteklemez; lütfen bilgisayar üzerinden kullan.',
+    ],
     afterTitle: 'Kurulumdan sonra',
     afterSteps: [
       'x.com, instagram.com, reddit.com veya linkedin.com adresine gir ve normal şekilde oturum aç.',

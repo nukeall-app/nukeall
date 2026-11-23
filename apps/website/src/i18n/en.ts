@@ -31,9 +31,9 @@ export const en = {
         'Free open-source browser extension to bulk delete all tweets, X likes, Instagram comments, posts & DMs, Reddit comments & posts, and old LinkedIn posts — 100% local, no password.',
     },
     install: {
-      title: 'Install NukeAll — Firefox, Chrome, Edge & Brave Setup Guide',
+      title: 'Install NukeAll — Firefox, Chrome, Edge, Brave & Android Setup Guide',
       description:
-        'Step-by-step guide to install the free NukeAll extension on Firefox, Chrome, Edge or Brave in 1 minute from GitHub Releases.',
+        'Step-by-step guide to install the free NukeAll extension on desktop (Firefox, Chrome, Edge, Brave) and Android mobile browsers (Kiwi, Lemur, Edge Android).',
     },
     faq: {
       title: 'NukeAll FAQ — Account Safety, Privacy & How Bulk Deleting Works',
@@ -342,7 +342,7 @@ export const en = {
   },
   install: {
     h1: 'Install NukeAll',
-    intro: 'NukeAll runs in Firefox, Chrome, Edge and Brave. Pick your browser below — it takes about a minute.',
+    intro: 'NukeAll runs on desktop (Firefox, Chrome, Edge, Brave) and supported Android browsers. Pick your device below — setup takes about a minute.',
     firefoxTitle: 'Firefox',
     amoTitle: 'Option A — Firefox Add-ons (recommended once live)',
     amoSteps: [
@@ -368,6 +368,24 @@ export const en = {
       'Pin NukeAll and open the side panel from the toolbar icon.',
     ],
     devNote: 'Chromium may show a “developer mode extensions” notice at startup. That is normal for extensions installed outside the Chrome Web Store.',
+    mobileAnchor: 'Android (Mobile)',
+    mobileTitle: 'Android (Phone / Tablet)',
+    mobileBadge: 'Works on Android',
+    mobileChromiumTitle: 'Kiwi Browser, Lemur Browser & Edge Android (Ready Now)',
+    mobileChromiumSteps: [
+      'Install <strong>Kiwi Browser</strong>, <strong>Lemur Browser</strong>, or <strong>Microsoft Edge</strong> on your Android phone and open its Extensions menu.',
+      'Download <code>nukeall-chrome.zip</code> from the latest GitHub Release (under Assets) onto your phone.',
+      'Turn on <strong>Developer mode</strong> on the browser’s Extensions page and tap <strong>+ (from .zip/.crx/.user.js)</strong> (or load the unzipped folder) to pick <code>nukeall-chrome.zip</code>.',
+      'Open x.com, instagram.com, reddit.com or linkedin.com in that browser, sign in, and tap NukeAll from the browser’s Extensions menu. Because mobile browsers do not have a desktop side panel, NukeAll automatically opens its full-screen panel in a new tab.',
+    ],
+    mobileFirefoxTitle: 'Firefox for Android (Once live on Firefox Add-ons)',
+    mobileFirefoxBody:
+      'Once NukeAll is published on <strong>addons.mozilla.org</strong>, Firefox for Android users will be able to install it in one tap — and the panel opens cleanly in full screen inside a new tab.',
+    mobileNoticeTitle: 'Not supported on standard Chrome Android or iPhone',
+    mobileNoticeLines: [
+      'Standard <strong>Google Chrome (Android)</strong> does not support browser extensions — use Kiwi Browser, Lemur Browser, or Edge Android instead.',
+      '<strong>iPhone / iPad (iOS)</strong> browsers do not support desktop Chrome or Firefox <code>.zip</code> extension packages — please use a desktop or laptop computer.',
+    ],
     afterTitle: 'After installing',
     afterSteps: [
       'Open x.com, instagram.com, reddit.com or linkedin.com and log in as usual.',
