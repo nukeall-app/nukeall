@@ -1,8 +1,24 @@
+import type { PageKey } from './routes';
+
 export interface FaqItem {
   q: string;
   a: string;
   href?: string;
   linkLabel?: string;
+}
+
+export interface PlatformDetailItem {
+  id: string;
+  badge: string;
+  color: string;
+  name: string;
+  tagline: string;
+  cleans: string[];
+  bullets: string[];
+  guideKey: PageKey;
+  guideLabel: string;
+  secondaryGuideKey?: PageKey;
+  secondaryGuideLabel?: string;
 }
 
 export const en = {
@@ -133,6 +149,81 @@ export const en = {
         desc: 'Pick a calendar date range and safely clean old posts, comments and reactions before a job move.',
       },
     ],
+  },
+  platformDetails: {
+    eyebrow: 'Platform by platform',
+    title: 'What you can clean on each platform',
+    subtitle:
+      'Every cleanup runs directly inside your own signed-in browser tab — pick a platform, review your list first, and delete safely at your own pace.',
+    cleansLabel: 'What gets cleaned',
+    items: [
+      {
+        id: 'x',
+        badge: 'X',
+        color: 'bg-zinc-800 text-white border-zinc-700',
+        name: 'X (Twitter)',
+        tagline: 'Full timeline cleanup — from recent replies to tweets from years ago.',
+        cleans: ['Tweets', 'Replies', 'Likes', 'Reposts', 'Bookmarks'],
+        bullets: [
+          'Bulk-delete your tweets, replies, likes, reposts and saved bookmarks — one content type at a time for reliability.',
+          'Filter by calendar dates, keywords, media, or the offline EN + TR profanity filter before anything is touched.',
+          'Automatically protect pinned posts, viral tweets above your chosen like count, or keep tags.',
+          'Go past X’s timeline limit by importing your official X data download right inside your browser.',
+        ],
+        guideKey: 'guideTweets',
+        guideLabel: 'Step-by-step X guide',
+      },
+      {
+        id: 'instagram',
+        badge: 'IG',
+        color: 'bg-pink-500/20 text-pink-300 border-pink-500/30',
+        name: 'Instagram',
+        tagline: 'Clean public activity and retract your own sent Direct messages.',
+        cleans: ['Comments', 'Likes', 'Posts', 'Sent DMs (Unsend)'],
+        bullets: [
+          'Remove old comments, likes and posts automatically inside your signed-in Instagram tab without sharing your password.',
+          'Open any Direct chat and automatically unsend only your own sent messages so they disappear for both sides.',
+          'Preview every item on the review screen first and uncheck photos, comments or messages you want to keep.',
+          'Import your official Instagram data download (with clean international & Turkish text support) to reach older history.',
+        ],
+        guideKey: 'guideIgComments',
+        guideLabel: 'Comments & likes guide',
+        secondaryGuideKey: 'guideIgDm',
+        secondaryGuideLabel: 'DM unsend guide',
+      },
+      {
+        id: 'reddit',
+        badge: 'R',
+        color: 'bg-orange-500/20 text-orange-300 border-orange-500/30',
+        name: 'Reddit',
+        tagline: 'Overwrite old text before deleting so third-party archives stay empty.',
+        cleans: ['Comments', 'Posts', 'Overwrite (1–3×)', 'Edit-Only Mode'],
+        bullets: [
+          'Overwrite every comment or text post 1–3 times with random or custom text before deleting so old words do not linger.',
+          'Pick edit-only mode if you want to scramble old text while keeping threads intact, or overwrite + permanently delete.',
+          'Filter by date, keywords, score or community, and automatically keep high-value posts untouched.',
+          'Upload your official Reddit data download to wipe history older than Reddit’s live 1,000-item view limit.',
+        ],
+        guideKey: 'guideReddit',
+        guideLabel: 'Step-by-step Reddit guide',
+      },
+      {
+        id: 'linkedin',
+        badge: 'in',
+        color: 'bg-sky-500/20 text-sky-300 border-sky-500/30',
+        name: 'LinkedIn',
+        tagline: 'Tidy up old posts and reactions by exact date before a career move.',
+        cleans: ['Posts', 'Comments', 'Reactions & Likes', 'Calendar Date Picker'],
+        bullets: [
+          'Delete old posts, comments and likes while leaving recent career highlights completely untouched.',
+          'Select exact From / To calendar dates or one-click age presets (> 30 days, > 6 months, > 1 year) right in the review screen.',
+          'Save an optional readable backup on your computer before deleting any past work posts.',
+          'Load your official LinkedIn data export to find and clean older shares, comments and reactions safely.',
+        ],
+        guideKey: 'guideLinkedin',
+        guideLabel: 'Step-by-step LinkedIn guide',
+      },
+    ] as PlatformDetailItem[],
   },
   features: {
     title: 'Everything paid tools charge for — completely free',

@@ -1,4 +1,4 @@
-import type { Dict, FaqItem } from './en';
+import type { Dict, FaqItem, PlatformDetailItem } from './en';
 
 export const tr: Dict = {
   langName: 'Türkçe',
@@ -128,6 +128,81 @@ export const tr: Dict = {
         desc: 'İş başvuruları öncesi eski gönderi, yorum ve tepkilerini takvimden tarih seçerek kolayca temizle.',
       },
     ],
+  },
+  platformDetails: {
+    eyebrow: 'Platform bazında tüm özellikler',
+    title: 'Her platformda tam olarak neler yapabilirsin?',
+    subtitle:
+      'Her işlem doğrudan kendi açık tarayıcı sekmende çalışır — platformunu seç, silinecekleri önce listeden kontrol et ve güvenli hızda temizle.',
+    cleansLabel: 'Temizlenebilen içerikler',
+    items: [
+      {
+        id: 'x',
+        badge: 'X',
+        color: 'bg-zinc-800 text-white border-zinc-700',
+        name: 'X (Twitter)',
+        tagline: 'En yeni yanıtlardan yıllar önceki tweetlere kadar tam zaman çizelgesi temizliği.',
+        cleans: ['Tweetler', 'Yanıtlar', 'Beğeniler', 'Repostlar', 'Yer İmleri'],
+        bullets: [
+          'Eski tweetlerini, yanıtlarını, beğenilerini, repostlarını ve yer imlerini kararlılık için tür bazında güvenle toplu sil.',
+          'Hiçbir şeye dokunmadan önce takvimden tarih seç, kelime ara veya çevrimdışı EN + TR küfür filtresiyle listeyi daralt.',
+          'Sabitlenen tweetlerini, belirlediğin beğeni sayısını aşan popüler gönderilerini ve koruma kelimelerini otomatik hariç tut.',
+          'X’in zaman çizelgesi sınırını aşmak için resmi X veri arşivini doğrudan tarayıcının içinden yükleyip eski geçmişini sil.',
+        ],
+        guideKey: 'guideTweets',
+        guideLabel: 'Adım adım X rehberi',
+      },
+      {
+        id: 'instagram',
+        badge: 'IG',
+        color: 'bg-pink-500/20 text-pink-300 border-pink-500/30',
+        name: 'Instagram',
+        tagline: 'Eski yorum ve beğenilerini sil; Direct sohbetlerinde yalnızca kendi mesajlarını geri al.',
+        cleans: ['Yorumlar', 'Beğeniler', 'Gönderiler', 'Giden DM’ler (Geri Al)'],
+        bullets: [
+          'Şifreni paylaşmadan, açık Instagram tarayıcı sekmen üzerinden eski yorumlarını, beğenilerini ve gönderilerini otomatik temizle.',
+          'İstediğin Direct sohbetini aç ve yalnızca kendi gönderdiğin mesajların gönderimini her iki taraftan da otomatik geri al.',
+          'Silme öncesinde tüm içerikleri onay ekranında gör; saklamak istediğin fotoğraf, yorum veya mesajların işaretini kaldır.',
+          'Daha eski geçmişe ulaşmak için resmi Instagram veri indirmesini (Türkçe karakterler bozulmadan) doğrudan içeri aktar.',
+        ],
+        guideKey: 'guideIgComments',
+        guideLabel: 'Yorum ve beğeni rehberi',
+        secondaryGuideKey: 'guideIgDm',
+        secondaryGuideLabel: 'DM geri alma rehberi',
+      },
+      {
+        id: 'reddit',
+        badge: 'R',
+        color: 'bg-orange-500/20 text-orange-300 border-orange-500/30',
+        name: 'Reddit',
+        tagline: 'Silmeden önce eski yazıların üzerine yazarak üçüncü taraf arşivlerde bile iz bırakma.',
+        cleans: ['Yorumlar', 'Gönderiler', 'Üzerine Yaz (1–3×)', 'Sadece Düzenle'],
+        bullets: [
+          'Silmeden önce her yorum ve metin gönderisinin üzerine 1–3 tur rastgele veya belirlediğin metni yazarak eski cümlelerini yok et.',
+          'Konular bozulmasın istersen yalnızca metni değiştirme modunu seç ya da üzerine yazıp kalıcı olarak sil.',
+          'Tarih, kelime, puan veya topluluk (subreddit) bazında filtrele; yüksek puanlı paylaşımlarını otomatik koru.',
+          'Reddit’in canlı 1.000 içerik görünüm sınırından eski geçmişini temizlemek için resmi Reddit veri indirmesini yükle.',
+        ],
+        guideKey: 'guideReddit',
+        guideLabel: 'Adım adım Reddit rehberi',
+      },
+      {
+        id: 'linkedin',
+        badge: 'in',
+        color: 'bg-sky-500/20 text-sky-300 border-sky-500/30',
+        name: 'LinkedIn',
+        tagline: 'Kariyer değişikliği veya iş başvurusu öncesi eski gönderi ve tepkilerini tarihe göre temizle.',
+        cleans: ['Gönderiler', 'Yorumlar', 'Tepki ve Beğeniler', 'Tarih Seçici'],
+        bullets: [
+          'Güncel iş ve başarı paylaşımlarına hiç dokunmadan yalnızca eski gönderilerini, yorumlarını ve beğenilerini topluca sil.',
+          'Onay ekranında takvimden Başlangıç / Bitiş tarihi belirle veya tek tıkla 30 gün+, 6 ay+, 1 yıl+ ön ayarlarını kullan.',
+          'Eski iş paylaşımlarını kaldırmadan önce istersen bilgisayarında aranabilir okunaklı bir yedek kopya sakla.',
+          'Çok eski paylaşım, yorum ve tepkilerine de ulaşmak için resmi LinkedIn veri indirmesini tarayıcının içinde güvenle işle.',
+        ],
+        guideKey: 'guideLinkedin',
+        guideLabel: 'Adım adım LinkedIn rehberi',
+      },
+    ] as PlatformDetailItem[],
   },
   features: {
     title: 'Ücretli araçların sunduğu her şey — tamamen ücretsiz',
