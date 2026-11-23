@@ -43,6 +43,8 @@ import { getUiDict, resolveUiLang } from '../i18n';
 
 type TabKey = 'scan' | 'archive' | 'review' | 'viewer' | 'settings';
 
+const BUYMEACOFFEE_URL = 'https://buymeacoffee.com/inf0s33k';
+
 const PLATFORM_TYPES: Record<PlatformId, ContentType[]> = {
   x: ['reply', 'post', 'repost', 'quote', 'like', 'bookmark'],
   instagram: ['comment', 'like', 'post', 'message'],
@@ -135,7 +137,7 @@ export function Dashboard() {
       if (bgResp && bgResp.ok && bgResp.state) {
         setDeletedToday(bgResp.state.deletedToday);
       }
-      if (cp.activeJob?.status === 'done' && !s.supportPromptShown && cp.activeJob.done >= 10) {
+      if (cp.activeJob?.status === 'done' && !s.supportPromptShown && cp.activeJob.done >= 1) {
         setShowSupportBanner(true);
       }
     })();
@@ -154,7 +156,7 @@ export function Dashboard() {
         setActiveJob(msg.state);
         if (Array.isArray(msg.log)) setJobLog(msg.log);
         if (typeof msg.deletedToday === 'number') setDeletedToday(msg.deletedToday);
-        if (msg.state.status === 'done' && msg.state.done >= 10) {
+        if (msg.state.status === 'done' && msg.state.done >= 1) {
           setShowSupportBanner(true);
         }
       }
@@ -543,6 +545,16 @@ export function Dashboard() {
           </div>
         </div>
         <div className="flex items-center gap-1.5">
+          <a
+            href={BUYMEACOFFEE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={d.coffeeTitle}
+            aria-label={d.coffeeTitle}
+            className="px-2 py-1 rounded-md bg-[#FFDD00] text-zinc-950 hover:bg-[#ffe548] font-bold text-[11px] leading-none inline-flex items-center gap-1"
+          >
+            ☕
+          </a>
           <button
             type="button"
             onClick={() => updateSettings({ locale: lang === 'tr' ? 'en' : 'tr' })}
@@ -728,30 +740,33 @@ export function Dashboard() {
         </div>
       )}
 
-      {/* Gentle post-cleanup sponsor prompt (dismissible, plain links only) */}
+      {/* Gentle post-cleanup support prompt (dismissible, plain link only) */}
       {showSupportBanner && (
-        <div className="mx-3 mt-2 p-2.5 rounded-lg border border-orange-500/40 bg-orange-500/10 flex items-center justify-between gap-2">
-          <div>
-            <p className="mb-1">{d.job.supportBanner}</p>
-            <a
-              href="https://nukeall.app/sponsor/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-orange-400 font-semibold underline"
+        <div className="mx-3 mt-2 p-3 rounded-lg border border-amber-400/50 bg-amber-500/10 space-y-2">
+          <div className="flex items-start justify-between gap-2">
+            <div className="font-bold text-amber-300">
+              {d.job.supportTitle.replace('{n}', String(activeJob?.done ?? 0))}
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                setShowSupportBanner(false);
+                updateSettings({ supportPromptShown: true });
+              }}
+              className="text-[11px] opacity-75 hover:opacity-100 shrink-0 cursor-pointer"
             >
-              {d.job.supportCta} →
-            </a>
+              {d.job.supportLater}
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={() => {
-              setShowSupportBanner(false);
-              updateSettings({ supportPromptShown: true });
-            }}
-            className="text-[11px] opacity-75 hover:opacity-100 shrink-0"
+          <p className="leading-relaxed opacity-90">{d.job.supportBanner}</p>
+          <a
+            href={BUYMEACOFFEE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#FFDD00] text-zinc-950 font-bold text-[11px] hover:bg-[#ffe548]"
           >
-            {d.job.dismiss}
-          </button>
+            {d.job.supportCta} ↗
+          </a>
         </div>
       )}
 
@@ -1397,6 +1412,19 @@ export function Dashboard() {
                 />
                 <span>{d.settings.redditEditOnly}</span>
               </label>
+            </div>
+
+            <div className="p-3 rounded-lg border border-amber-400/40 bg-amber-500/10 space-y-2">
+              <div className="font-bold text-amber-300">{d.settings.supportTitle}</div>
+              <p className="text-[11px] leading-relaxed opacity-90">{d.settings.supportBody}</p>
+              <a
+                href={BUYMEACOFFEE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#FFDD00] text-zinc-950 font-bold text-[11px] hover:bg-[#ffe548]"
+              >
+                {d.settings.supportCta} ↗
+              </a>
             </div>
 
             <p className={`text-[11px] pt-2 border-t border-zinc-800 ${muted}`}>

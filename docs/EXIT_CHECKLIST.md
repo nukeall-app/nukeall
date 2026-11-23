@@ -23,7 +23,7 @@ Keep every production account under a dedicated project role email (for example 
 - [ ] **Chrome Web Store Developer Account:** Publish under a dedicated project publisher account (`2FA` recovery codes stored offline).
 - [ ] **Firefox Add-ons (AMO) Account:** Publish under a dedicated project account and document add-on transfer procedures.
 - [ ] **Cloudflare Pages + Web Analytics:** Keep the `nukeall.app` Pages project and Web Analytics site inside a transferable team account.
-- [ ] **Funding Links Ready:** Replace `YOUR_GITHUB` and `YOUR_KOFI` placeholders when live sponsor accounts are connected.
+- [x] **Funding Links Ready:** Connected live Buy Me a Coffee (`inf0s33k`) funding links across `.github/FUNDING.yml`, website, and extension.
 
 ---
 

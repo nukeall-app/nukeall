@@ -1,5 +1,5 @@
 ---
-import { KOFI_URL, SPONSORS_URL } from '../config';
+import { BUYMEACOFFEE_URL } from '../config';
 import { SPONSORS } from '../data/sponsors';
 import { t, type Lang } from '../i18n/routes';
 
@@ -12,40 +12,79 @@ const d = t(lang);
 ---
 
 <div class="max-w-5xl mx-auto px-4 py-16 space-y-14">
-  <header class="max-w-2xl space-y-4">
-    <h1 class="text-4xl font-extrabold text-white tracking-tight">{d.sponsor.h1}</h1>
-    <p class="text-lg text-zinc-400 leading-relaxed">{d.sponsor.intro}</p>
-    <div class="flex flex-wrap gap-3 pt-2">
+  <header class="rounded-3xl border border-amber-400/30 bg-gradient-to-br from-amber-500/10 via-zinc-900/90 to-zinc-950 p-8 sm:p-10 space-y-5">
+    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-[#FFDD00]/15 text-[#FFDD00] border border-[#FFDD00]/30">
+      {d.sponsor.eyebrow}
+    </span>
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+      {d.sponsor.h1}
+    </h1>
+    <p class="text-lg text-zinc-300 leading-relaxed max-w-2xl">{d.sponsor.intro}</p>
+    <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-zinc-800 bg-zinc-950/80 text-xs text-zinc-300">
+      <span class="text-emerald-400 font-bold" aria-hidden="true">✓</span>
+      <span>{d.sponsor.savingsNote}</span>
+    </div>
+    <div class="flex flex-wrap items-center gap-3 pt-2">
       <a
-        href={SPONSORS_URL}
+        href={BUYMEACOFFEE_URL}
         target="_blank"
         rel="noopener noreferrer"
-        class="px-5 py-3 rounded-xl bg-orange-500 text-zinc-950 font-bold text-sm hover:bg-orange-400"
+        class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#FFDD00] text-zinc-950 font-extrabold text-sm hover:bg-[#ffe548] transition-colors shadow-lg shadow-amber-500/10"
       >
-        {d.sponsor.ghBtn} ↗
-      </a>
-      <a
-        href={KOFI_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="px-5 py-3 rounded-xl border border-zinc-700 bg-zinc-900 text-white font-semibold text-sm hover:border-orange-500"
-      >
-        {d.sponsor.kofiBtn} ↗
+        <span>☕ {d.sponsor.bmcBtn}</span>
+        <span aria-hidden="true">↗</span>
       </a>
     </div>
-    <p class="text-xs text-zinc-500">{d.sponsor.note}</p>
+    <p class="text-xs text-zinc-400">{d.sponsor.note}</p>
   </header>
 
   <section class="space-y-6">
-    <h2 class="text-2xl font-bold text-white">{d.sponsor.tiersTitle}</h2>
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="space-y-1.5">
+      <h2 class="text-2xl font-bold text-white">{d.sponsor.tiersTitle}</h2>
+      <p class="text-sm text-zinc-400">{d.sponsor.tiersSubtitle}</p>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-3">
       {d.sponsor.tiers.map((tier) => (
-        <div class="p-5 rounded-2xl border border-zinc-800 bg-zinc-900/50 space-y-2">
-          <div class="text-2xl font-extrabold text-orange-400">
-            ${tier.price}<span class="text-xs font-normal text-zinc-400">{d.sponsor.perMonth}</span>
+        <a
+          href={BUYMEACOFFEE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class:list={[
+            'group p-6 rounded-2xl border flex flex-col justify-between gap-4 transition-colors',
+            tier.featured
+              ? 'border-amber-400/60 bg-amber-500/10 hover:border-[#FFDD00]'
+              : 'border-zinc-800 bg-zinc-900/50 hover:border-amber-400/50',
+          ]}
+        >
+          <div class="space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-2xl font-extrabold text-[#FFDD00]">${tier.price}</span>
+              {tier.badge && (
+                <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#FFDD00] text-zinc-950">
+                  {tier.badge}
+                </span>
+              )}
+            </div>
+            <div class="font-bold text-white text-base">{tier.name}</div>
+            <p class="text-xs text-zinc-300 leading-relaxed">{tier.perks}</p>
           </div>
-          <div class="font-bold text-white">{tier.name}</div>
-          <p class="text-xs text-zinc-400 leading-relaxed">{tier.perks}</p>
+          <div class="pt-3 border-t border-zinc-800/80 text-xs font-bold text-[#FFDD00] group-hover:underline flex items-center justify-between">
+            <span>{tier.cta}</span>
+            <span aria-hidden="true">↗</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="space-y-5">
+    <h2 class="text-2xl font-bold text-white">{d.sponsor.impactTitle}</h2>
+    <div class="grid gap-4 sm:grid-cols-3">
+      {d.sponsor.impactItems.map((item) => (
+        <div class="p-5 rounded-2xl border border-zinc-800 bg-zinc-900/40 space-y-2">
+          <div class="text-xl" aria-hidden="true">{item.icon}</div>
+          <h3 class="font-bold text-white text-sm">{item.title}</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">{item.body}</p>
         </div>
       ))}
     </div>

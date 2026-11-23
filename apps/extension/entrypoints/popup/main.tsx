@@ -137,6 +137,15 @@ function PopupApp() {
         )}
       </div>
 
+      <a
+        href="https://buymeacoffee.com/inf0s33k"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block w-full text-center py-2 px-3 rounded-lg bg-[#FFDD00] text-zinc-950 font-bold text-xs hover:bg-[#ffe548] transition-colors"
+      >
+        {d.popup.supportBtn}
+      </a>
+
       <div className="pt-2 border-t border-zinc-800 flex items-center justify-between text-[11px] text-zinc-400">
         <a
           href="https://nukeall.app"

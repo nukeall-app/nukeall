@@ -11,6 +11,7 @@
 [![Fiyat: Ücretsiz & Sınırsız](https://img.shields.io/badge/Fiyat-%C3%9Ccretsiz_%26_S%C4%B1n%C4%B1rs%C4%B1z-10b981?style=for-the-badge)](https://nukeall.app/tr/)
 [![Gizlilik: Sıfır Sunucu](https://img.shields.io/badge/Gizlilik-S%C4%B1f%C4%B1r_Sunucu-18181b?style=for-the-badge)](PRIVACY.md)
 [![Tarayıcılar: Chrome | Edge | Brave | Firefox](https://img.shields.io/badge/Taray%C4%B1c%C4%B1-Chrome_%7C_Edge_%7C_Brave_%7C_Firefox-2563eb?style=for-the-badge)](https://github.com/nukeall-app/nukeall/releases/latest)
+[![Bana Bir Kahve Ismarla](https://img.shields.io/badge/Kahve_Ismarla-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/inf0s33k)
 
 <p>
   <a href="https://github.com/nukeall-app/nukeall/releases/latest"><strong>⬇️ Son Sürümü İndir</strong></a>
@@ -23,7 +24,7 @@
   &nbsp;·&nbsp;
   <a href="PRIVACY.md"><strong>Gizlilik</strong></a>
   &nbsp;·&nbsp;
-  <a href="https://nukeall.app/tr/destek/"><strong>Destek Ol</strong></a>
+  <a href="https://buymeacoffee.com/inf0s33k"><strong>☕ Kahve Ismarla</strong></a>
 </p>
 
 <p>
@@ -147,6 +148,20 @@ npm run package:release
 ```
 
 </details>
+
+---
+
+## ☕ Bağımsız Geliştirmeyi Destekle
+
+Diğer geçmiş temizleme araçları yalnızca kendi eski gönderilerini silmen için **ayda $8–$24** ücret istiyor. **NukeAll ise tek bir bağımsız geliştirici tarafından reklamsız, sınırsız ve sonsuza kadar ücretsiz sürdürülüyor.**
+
+Ismarlayacağın her kahve doğrudan alan adı giderlerini (`nukeall.app`), X, Instagram, Reddit veya LinkedIn arayüz değiştirdiğinde hızla düzeltme yapılmasını ve Bluesky / Threads gibi yeni platformların eklenmesini finanse eder. NukeAll işine yaradıysa gelişimine küçük bir destek verebilirsin:
+
+<div align="center">
+  <a href="https://buymeacoffee.com/inf0s33k">
+    <img src="https://img.shields.io/badge/☕_Bana_Bir_Kahve_Ismarla-NukeAll'u_Destekle-FFDD00?style=for-the-badge" alt="Buy Me a Coffee" />
+  </a>
+</div>
 
 ---
 

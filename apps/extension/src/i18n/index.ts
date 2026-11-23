@@ -6,6 +6,7 @@ export interface UiDict {
   localBadge: string;
   closePanel: string;
   closePanelTitle: string;
+  coffeeTitle: string;
   warningTitle: string;
   warningBody: string;
   warningAccept: string;
@@ -127,8 +128,10 @@ export interface UiDict {
     clearSaved: string;
     reportHtml: string;
     reportJson: string;
+    supportTitle: string;
     supportBanner: string;
     supportCta: string;
+    supportLater: string;
     dismiss: string;
   };
   viewer: {
@@ -153,6 +156,9 @@ export interface UiDict {
     redditCustomTextPlaceholder: string;
     redditEditOnly: string;
     language: string;
+    supportTitle: string;
+    supportBody: string;
+    supportCta: string;
     privacyNote: string;
   };
   risk: {
@@ -164,6 +170,7 @@ export interface UiDict {
     status: string;
     activeTab: string;
     openX: string;
+    supportBtn: string;
     githubLink: string;
     siteLink: string;
   };
@@ -175,6 +182,7 @@ export const enUi: UiDict = {
   localBadge: '100% Local · Zero telemetry',
   closePanel: 'Close',
   closePanelTitle: 'Close NukeAll panel',
+  coffeeTitle: 'Buy the developer a coffee — keep NukeAll free',
   warningTitle: 'Safety & platform notice',
   warningBody:
     'Only your own content is ever targeted. Platforms discourage fast automation — keep Safe speed enabled and export a manual backup before deleting if you want to keep a copy. Deletion is permanent.',
@@ -301,8 +309,10 @@ export const enUi: UiDict = {
     clearSaved: 'Discard saved job',
     reportHtml: 'Deletion Report (HTML)',
     reportJson: 'Report (JSON)',
-    supportBanner: '☕ NukeAll saved your history cleanly and cost $0. Support open-source maintenance?',
-    supportCta: 'Sponsor on GitHub / Ko-fi',
+    supportTitle: '🎉 Done! Cleaned {n} items for $0.',
+    supportBanner: 'Paid tools charge $8–$24/mo. NukeAll is built by one independent developer — if it saved you time, buying a coffee keeps it free & working!',
+    supportCta: '☕ Buy me a coffee',
+    supportLater: 'Maybe later',
     dismiss: 'Dismiss',
   },
   viewer: {
@@ -327,6 +337,9 @@ export const enUi: UiDict = {
     redditCustomTextPlaceholder: 'Leave empty for random words each pass',
     redditEditOnly: 'Overwrite only (do not delete yet)',
     language: 'Language',
+    supportTitle: '☕ Keep NukeAll 100% free',
+    supportBody: 'Other tools charge $8–$24/month. NukeAll is maintained by one independent developer with zero ads or tracking. Every coffee covers domain fees and keeps all 4 platforms working.',
+    supportCta: '☕ Buy me a coffee on Buy Me a Coffee',
     privacyNote: 'CSP enforces connect-src \'self\'. Network traffic only touches the active platform tab.',
   },
   risk: {
@@ -338,6 +351,7 @@ export const enUi: UiDict = {
     status: 'Current run',
     activeTab: 'Active tab',
     openX: 'Open x.com',
+    supportBtn: '☕ Buy the dev a coffee · Keep NukeAll free',
     githubLink: 'GitHub',
     siteLink: 'nukeall.app',
   },
@@ -349,6 +363,7 @@ export const trUi: UiDict = {
   localBadge: '%100 Yerel · Sıfır telemetri',
   closePanel: 'Kapat',
   closePanelTitle: 'NukeAll panelini kapat',
+  coffeeTitle: 'Geliştiriciye bir kahve ısmarla — NukeAll’u ücretsiz tut',
   warningTitle: 'Güvenlik ve platform uyarısı',
   warningBody:
     'Yalnızca kendi içeriklerin hedeflenir. Platformlar hızlı otomasyonu kısıtlayabilir — Güvenli hızda kal. Yedek saklamak istersen silmeden önce İncele ekranından elle indirebilirsin. Silme işlemi geri alınamaz.',
@@ -475,8 +490,10 @@ export const trUi: UiDict = {
     clearSaved: 'Kayıtlı görevi temizle',
     reportHtml: 'Silme Raporu (HTML)',
     reportJson: 'Rapor (JSON)',
-    supportBanner: '☕ NukeAll geçmişini ücretsiz temizledi. Açık kaynak geliştirmeyi desteklemek ister misin?',
-    supportCta: 'GitHub / Ko-fi ile Destek Ol',
+    supportTitle: '🎉 Tamamlandı! {n} içerik tamamen ücretsiz temizlendi.',
+    supportBanner: 'Ücretli araçlar bunun için ayda $8–$24 istiyor. NukeAll tek bir bağımsız geliştirici tarafından ücretsiz sürdürülüyor — işine yaradıysa bir kahve ısmarlayarak ayakta kalmasına destek olabilirsin!',
+    supportCta: '☕ Bir kahve ısmarla',
+    supportLater: 'Sonra',
     dismiss: 'Kapat',
   },
   viewer: {
@@ -501,6 +518,9 @@ export const trUi: UiDict = {
     redditCustomTextPlaceholder: 'Boş bırakırsan her turda rastgele kelimeler yazar',
     redditEditOnly: 'Sadece üzerine yaz (henüz silme)',
     language: 'Dil',
+    supportTitle: '☕ NukeAll’u %100 ücretsiz tut',
+    supportBody: 'Başka araçlar ayda $8–$24 isterken NukeAll reklamsız ve sınırsız kalmaya devam ediyor. Ismarlayacağın her kahve alan adı masraflarını karşılar ve tüm platformların güncel kalmasını sağlar.',
+    supportCta: '☕ Buy Me a Coffee üzerinden destek ol',
     privacyNote: 'CSP connect-src \'self\' kuralı aktiftir. Ağ istekleri yalnızca açık platform sekmesine gider.',
   },
   risk: {
@@ -512,6 +532,7 @@ export const trUi: UiDict = {
     status: 'Aktif işlem',
     activeTab: 'Açık sekme',
     openX: 'x.com aç',
+    supportBtn: '☕ Kahve ısmarla · NukeAll’u destekle',
     githubLink: 'GitHub',
     siteLink: 'nukeall.app',
   },

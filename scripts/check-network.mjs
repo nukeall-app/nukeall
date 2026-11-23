@@ -13,7 +13,7 @@ const ALLOWED_EXACT = new Set([
   'linkedin.com',
   'nukeall.app',
   'github.com',
-  'ko-fi.com',
+  'buymeacoffee.com',
   'addons.mozilla.org',
   'www.w3.org',
   'localhost',

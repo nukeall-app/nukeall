@@ -1,5 +1,5 @@
 ---
-import { ISSUES_URL, KOFI_URL, RELEASES_URL, REPO_URL, SPONSORS_URL } from '../config';
+import { BUYMEACOFFEE_URL, ISSUES_URL, RELEASES_URL, REPO_URL } from '../config';
 import { GUIDE_KEYS, guides } from '../data/guides';
 import { path, t, type Lang, type PageKey } from '../i18n/routes';
 
@@ -51,8 +51,7 @@ const switchPath = page === 'notFound' ? path('home', otherLang) : path(page, ot
       <ul class="space-y-1.5 text-xs">
         <li><a href={REPO_URL} target="_blank" rel="noopener noreferrer" class="hover:text-white">{d.footer.source} ↗</a></li>
         <li><a href={RELEASES_URL} target="_blank" rel="noopener noreferrer" class="hover:text-white">GitHub Releases ↗</a></li>
-        <li><a href={SPONSORS_URL} target="_blank" rel="noopener noreferrer" class="hover:text-white">GitHub Sponsors ↗</a></li>
-        <li><a href={KOFI_URL} target="_blank" rel="noopener noreferrer" class="hover:text-white">Ko-fi ↗</a></li>
+        <li><a href={BUYMEACOFFEE_URL} target="_blank" rel="noopener noreferrer" class="text-amber-300 hover:text-amber-200 font-medium">☕ Buy Me a Coffee ↗</a></li>
         <li><a href={ISSUES_URL} target="_blank" rel="noopener noreferrer" class="hover:text-white">Issues ↗</a></li>
         <li>
           <a href={switchPath} hreflang={otherLang} class="text-orange-400 hover:underline">

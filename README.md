@@ -11,6 +11,7 @@
 [![Price: 100% Free & Unlimited](https://img.shields.io/badge/Price-100%25_Free_%26_Unlimited-10b981?style=for-the-badge)](https://nukeall.app/)
 [![Privacy: Zero Servers](https://img.shields.io/badge/Privacy-Zero_Servers-18181b?style=for-the-badge)](PRIVACY.md)
 [![Browsers: Chrome | Edge | Brave | Firefox](https://img.shields.io/badge/Browsers-Chrome_%7C_Edge_%7C_Brave_%7C_Firefox-2563eb?style=for-the-badge)](https://github.com/nukeall-app/nukeall/releases/latest)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/inf0s33k)
 
 <p>
   <a href="https://github.com/nukeall-app/nukeall/releases/latest"><strong>⬇️ Download Latest Release</strong></a>
@@ -23,7 +24,7 @@
   &nbsp;·&nbsp;
   <a href="PRIVACY.md"><strong>Privacy</strong></a>
   &nbsp;·&nbsp;
-  <a href="https://nukeall.app/sponsor/"><strong>Sponsor</strong></a>
+  <a href="https://buymeacoffee.com/inf0s33k"><strong>☕ Buy Me a Coffee</strong></a>
 </p>
 
 <p>
@@ -147,6 +148,20 @@ npm run package:release
 ```
 
 </details>
+
+---
+
+## ☕ Support Independent Development
+
+Other history-cleaning tools charge **$8–$24 per month** just to delete your own old posts. **NukeAll is 100% free, unlimited, ad-free and open source — maintained by a single independent developer.**
+
+Every coffee helps cover the domain costs (`nukeall.app`), fix things quickly whenever X, Instagram, Reddit or LinkedIn change their layouts, and build support for new platforms like Bluesky and Threads. If NukeAll saved your time or cleaned years of history, consider supporting its upkeep:
+
+<div align="center">
+  <a href="https://buymeacoffee.com/inf0s33k">
+    <img src="https://img.shields.io/badge/☕_Buy_Me_a_Coffee-Keep_NukeAll_Free-FFDD00?style=for-the-badge" alt="Buy Me a Coffee" />
+  </a>
+</div>
 
 ---
 
