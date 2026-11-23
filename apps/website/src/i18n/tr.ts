@@ -215,8 +215,8 @@ export const tr: Dict = {
       {
         q: 'Nasıl kurarım?',
         a: 'GitHub Releases sayfasındaki Assets bölümünden tarayıcına uygun zip paketini indir. Chrome, Edge veya Brave için Chrome paketini klasöre çıkar, tarayıcının Uzantılar sayfasından Geliştirici Modunu açıp “Paketlenmemiş öğe yükle” ile klasörü seç. Eklenti Firefox Add-ons mağazasında henüz yayınlanmadığı için Firefox kullanıcıları indirilen paketi about:debugging üzerinden tek adımda yükleyebilir.',
-        href: 'https://nukeall.pages.dev/tr/kurulum/',
-        linkLabel: 'Adım adım kurulum rehberine git (https://nukeall.pages.dev/tr/kurulum/) →',
+        href: 'https://nukeall.app/tr/kurulum/',
+        linkLabel: 'Adım adım kurulum rehberine git (https://nukeall.app/tr/kurulum/) →',
       },
       { q: 'Yasal mı? Platform kurallarına uygun mu?', a: 'Kendi paylaşımlarını silmek senin hakkındır ve her platform bunu elle yapmana izin verir. NukeAll yalnızca kendi açık oturumunda tek tek tıklama zahmetini güvenli bir hızda otomatikleştirir. Bu bilgi hukuki tavsiye değildir.' },
       { q: 'Başkalarının içeriklerini silebilir mi?', a: 'Hayır. NukeAll yalnızca kendi hesabına ait gönderi, yanıt, yorum, beğeni, repost, yer imi ve giden DM mesajlarını temizler. Başkalarının içeriklerine asla dokunmaz.' },

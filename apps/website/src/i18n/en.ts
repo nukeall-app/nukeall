@@ -220,7 +220,7 @@ export const en = {
       {
         q: 'How do I install it?',
         a: 'Download the browser zip package from our GitHub Releases page under Assets. For Chrome, Edge or Brave, unzip the Chrome folder and load it via your browser’s Extensions page (Developer mode → Load unpacked). NukeAll is not listed on Firefox Add-ons yet, so Firefox users can load the Firefox package directly via about:debugging.',
-        href: 'https://nukeall.pages.dev/install/',
+        href: 'https://nukeall.app/install/',
         linkLabel: 'Open the 1-minute install guide →',
       },
       { q: 'Is it legal? Does it break platform rules?', a: 'Deleting your own content is your right, and every platform lets you remove items manually. NukeAll simply automates the clicks inside your own signed-in tab at a safe speed. This is not legal advice.' },

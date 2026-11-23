@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="https://nukeall.pages.dev/">
+<a href="https://nukeall.app/">
   <img src="docs/assets/banner.svg" alt="NukeAll — Free, open-source, 100% local social media history cleaner" width="100%" />
 </a>
 
@@ -8,22 +8,22 @@
 <br />
 
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-f97316?style=for-the-badge)](LICENSE)
-[![Price: 100% Free & Unlimited](https://img.shields.io/badge/Price-100%25_Free_%26_Unlimited-10b981?style=for-the-badge)](https://nukeall.pages.dev/)
+[![Price: 100% Free & Unlimited](https://img.shields.io/badge/Price-100%25_Free_%26_Unlimited-10b981?style=for-the-badge)](https://nukeall.app/)
 [![Privacy: Zero Servers](https://img.shields.io/badge/Privacy-Zero_Servers-18181b?style=for-the-badge)](PRIVACY.md)
 [![Browsers: Chrome | Edge | Brave | Firefox](https://img.shields.io/badge/Browsers-Chrome_%7C_Edge_%7C_Brave_%7C_Firefox-2563eb?style=for-the-badge)](https://github.com/nukeall-app/nukeall/releases/latest)
 
 <p>
   <a href="https://github.com/nukeall-app/nukeall/releases/latest"><strong>⬇️ Download Latest Release</strong></a>
   &nbsp;·&nbsp;
-  <a href="https://nukeall.pages.dev/"><strong>Website</strong></a>
+  <a href="https://nukeall.app/"><strong>Website</strong></a>
   &nbsp;·&nbsp;
-  <a href="https://nukeall.pages.dev/install/"><strong>Install Guide</strong></a>
+  <a href="https://nukeall.app/install/"><strong>Install Guide</strong></a>
   &nbsp;·&nbsp;
   <a href="README.tr.md"><strong>🇹🇷 Türkçe</strong></a>
   &nbsp;·&nbsp;
   <a href="PRIVACY.md"><strong>Privacy</strong></a>
   &nbsp;·&nbsp;
-  <a href="https://nukeall.pages.dev/sponsor/"><strong>Sponsor</strong></a>
+  <a href="https://nukeall.app/sponsor/"><strong>Sponsor</strong></a>
 </p>
 
 <p>
@@ -95,7 +95,7 @@
 
 ## 📦 Download & Install
 
-Grab the latest builds directly from **[GitHub Releases](https://github.com/nukeall-app/nukeall/releases/latest)** under **Assets** (verified with `SHA256SUMS.txt` checksums). Need screenshots or extra tips? See the **[step-by-step install guide](https://nukeall.pages.dev/install/)**.
+Grab the latest builds directly from **[GitHub Releases](https://github.com/nukeall-app/nukeall/releases/latest)** under **Assets** (verified with `SHA256SUMS.txt` checksums). Need screenshots or extra tips? See the **[step-by-step install guide](https://nukeall.app/install/)**.
 
 <table>
   <tr>
