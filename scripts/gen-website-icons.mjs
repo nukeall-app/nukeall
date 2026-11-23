@@ -83,35 +83,31 @@ function shortestAngleDiff(a, b) {
 const BLADE_ANGLES = [-Math.PI / 2, Math.PI / 6, (5 * Math.PI) / 6];
 const BLADE_HALF_SPAN = (28 * Math.PI) / 180;
 
-function samplePixel(nx, ny, half) {
-  // Coordinates normalized in [-1, 1] relative to icon center.
-  const corner = 0.44;
-  const limit = 1 - corner;
-  const ax = Math.max(0, Math.abs(nx) - limit);
-  const ay = Math.max(0, Math.abs(ny) - limit);
-  const boxDist = Math.hypot(ax, ay);
-  if (boxDist > corner) {
-    return [0, 0, 0, 0];
-  }
-
-  // Dark slate card gradient (#09090b -> #18181b) with crisp subtle #27272a border.
-  const gradT = Math.max(0, Math.min(1, (nx + ny + 2) / 4));
-  let r = 9 + gradT * (24 - 9);
-  let g = 9 + gradT * (24 - 9);
-  let b = 11 + gradT * (27 - 11);
-
-  if (corner - boxDist <= 0.032) {
-    r = 39;
-    g = 39;
-    b = 42;
-  }
+function samplePixel(nx, ny) {
+  // Full-bleed deep obsidian (#09090b) base so Google's circular crop has zero white corners.
+  let r = 9;
+  let g = 9;
+  let b = 11;
 
   const d = Math.hypot(nx, ny);
 
-  // Outer orange ring (matching docs/assets/logo.svg geometry, scaled slightly for crisp favicon visibility).
-  const ringInner = 0.675;
-  const ringOuter = 0.775;
-  const coreRadius = 0.16;
+  // Circular dark-glass medallion (#101015) with crisp #27272a rim matching user's emblem.
+  const outerDisk = 0.94;
+  const rimWidth = 0.025;
+  if (d <= outerDisk) {
+    r = 16;
+    g = 16;
+    b = 21;
+    if (outerDisk - d <= rimWidth) {
+      r = 39;
+      g = 39;
+      b = 42;
+    }
+  }
+
+  const ringInner = 0.67;
+  const ringOuter = 0.77;
+  const coreRadius = 0.155;
   const bladeInner = 0.255;
   const bladeOuter = 0.605;
 
@@ -120,10 +116,10 @@ function samplePixel(nx, ny, half) {
 
   if (d >= ringInner && d <= ringOuter) {
     isOrange = true;
-    shadeT = gradT;
+    shadeT = Math.max(0, Math.min(1, (nx + ny + 2) / 4));
   } else if (d <= coreRadius) {
     isOrange = true;
-    shadeT = 0.35 + 0.3 * (d / coreRadius);
+    shadeT = 0.3 + 0.35 * (d / coreRadius);
   } else if (d >= bladeInner && d <= bladeOuter) {
     const ang = Math.atan2(ny, nx);
     for (const target of BLADE_ANGLES) {
@@ -141,8 +137,7 @@ function samplePixel(nx, ny, half) {
     g = 146 + shadeT * (88 - 146);
     b = 60 + shadeT * (12 - 60);
   } else if (d < ringInner) {
-    // Soft ambient radial warm glow inside the ring.
-    const glow = Math.max(0, 1 - d / ringInner) * 0.14;
+    const glow = Math.max(0, 1 - d / ringInner) * 0.16;
     r = Math.min(255, r + glow * 249);
     g = Math.min(255, g + glow * 115);
     b = Math.min(255, b + glow * 22);
@@ -152,7 +147,7 @@ function samplePixel(nx, ny, half) {
 }
 
 function renderIcon(size) {
-  const SS = 4; // 4x4 supersampling for smooth vector-grade curves
+  const SS = 4;
   const buf = Buffer.alloc(size * size * 4);
   const half = size / 2;
 
@@ -161,7 +156,6 @@ function renderIcon(size) {
       let accR = 0;
       let accG = 0;
       let accB = 0;
-      let accA = 0;
 
       for (let sy = 0; sy < SS; sy++) {
         for (let sx = 0; sx < SS; sx++) {
@@ -169,30 +163,19 @@ function renderIcon(size) {
           const py = y + (sy + 0.5) / SS;
           const nx = (px - half) / half;
           const ny = (py - half) / half;
-          const [sr, sg, sb, sa] = samplePixel(nx, ny, half);
-          const alphaWeight = sa / 255;
-          accR += sr * alphaWeight;
-          accG += sg * alphaWeight;
-          accB += sb * alphaWeight;
-          accA += sa;
+          const [sr, sg, sb] = samplePixel(nx, ny);
+          accR += sr;
+          accG += sg;
+          accB += sb;
         }
       }
 
       const samples = SS * SS;
-      const outA = accA / samples;
       const idx = (y * size + x) * 4;
-      if (outA < 0.5) {
-        buf[idx] = 0;
-        buf[idx + 1] = 0;
-        buf[idx + 2] = 0;
-        buf[idx + 3] = 0;
-      } else {
-        const cov = accA / 255;
-        buf[idx] = Math.round(accR / cov);
-        buf[idx + 1] = Math.round(accG / cov);
-        buf[idx + 2] = Math.round(accB / cov);
-        buf[idx + 3] = Math.round(outA);
-      }
+      buf[idx] = Math.round(accR / samples);
+      buf[idx + 1] = Math.round(accG / samples);
+      buf[idx + 2] = Math.round(accB / samples);
+      buf[idx + 3] = 255;
     }
   }
   return encodePng(size, size, buf);

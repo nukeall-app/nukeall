@@ -102,7 +102,7 @@ export const tr: Dict = {
     eyebrow: 'Ücretsiz ve açık kaynak · Tamamen tarayıcında çalışır',
     h1Lead: 'Sosyal medya geçmişini',
     h1Tail: 'dakikalar içinde temizle.',
-    sub: 'X, Instagram, Reddit ve LinkedIn’deki eski gönderi, yorum, beğeni, repost ve sohbet mesajlarını tek yerden güvenle sil. Şifre gerekmez, abonelik yok — verilerin tarayıcından dışarı çıkmaz.',
+    sub: 'NukeAll ile X, Instagram, Reddit ve LinkedIn’deki eski gönderi, yorum, beğeni, repost ve sohbet mesajlarını tek yerden güvenle sil. Şifre gerekmez, abonelik yok — verilerin tarayıcından dışarı çıkmaz.',
     ctaFirefox: 'Firefox’a Ekle',
     soon: 'yakında',
     ctaChrome: 'Chrome / Edge / Brave için İndir',

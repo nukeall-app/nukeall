@@ -123,7 +123,7 @@ export const en = {
     eyebrow: 'Free & open source · 100% runs inside your browser',
     h1Lead: 'Wipe your social media',
     h1Tail: 'history in minutes.',
-    sub: 'Bulk-delete your own old posts, comments, likes, reposts and sent DMs across X, Instagram, Reddit and LinkedIn. Never share your password or pay for subscriptions.',
+    sub: 'Use NukeAll to bulk-delete your own old posts, comments, likes, reposts and sent DMs across X, Instagram, Reddit and LinkedIn. Never share your password or pay for subscriptions.',
     ctaFirefox: 'Add to Firefox',
     soon: 'coming soon',
     ctaChrome: 'Download for Chrome / Edge / Brave',
