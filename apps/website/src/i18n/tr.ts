@@ -5,29 +5,29 @@ export const tr: Dict = {
   ogLocale: 'tr_TR',
   meta: {
     home: {
-      title: 'NukeAll — Tüm Tweetleri, Instagram, Reddit ve LinkedIn Geçmişini Ücretsiz Sil (Açık Kaynak)',
+      title: 'NukeAll — Instagram Yorum, Reddit Post ve Tüm Tweetleri Ücretsiz Silme',
       description:
-        'X (Twitter) tüm tweetleri silme, Instagram yorum ve DM temizleme, Reddit yorum üzerine yazıp silme ve eski LinkedIn gönderilerini tarih seçerek silme eklentisi. %100 yerel, sınırsız, sunucusuz.',
+        'Instagram tüm yorumları silme, Reddit tüm postları ve yorumları üzerine yazıp silme, Twitter (X) tüm tweet ve beğenileri silme, eski LinkedIn gönderilerini kaldırma eklentisi. %100 yerel, ücretsiz.',
     },
     install: {
-      title: 'NukeAll Kurulum — Firefox, Chrome, Edge ve Brave Adım Adım Kurulum Rehberi',
+      title: 'NukeAll Kurulum — Chrome, Firefox, Edge ve Brave 1 Dakikada Kur',
       description:
-        'Ücretsiz tweet silme eklentisi NukeAll’u Firefox Add-ons (veya about:debugging) ile Chrome, Edge ve Brave tarayıcılarına kurma rehberi.',
+        'Ücretsiz sosyal medya temizleyici NukeAll’u Chrome, Edge, Brave ve Firefox tarayıcılarına adım adım kurma rehberi.',
     },
     faq: {
-      title: 'NukeAll SSS — Hesap Güvenliği, Gizlilik ve Toplu Silme Nasıl Çalışır?',
+      title: 'NukeAll SSS — Hesap Güvenliği, Ban Riski ve Toplu Silme Nasıl Çalışır?',
       description:
-        'Tüm tweetleri silme, Instagram yorumları toplu silme ve Reddit yorum temizliği hakkında sorular: ban riski, güvenli hız, veriler nereye gider ve neden ücretsiz?',
+        'Tüm tweetleri silme, Instagram tüm yorumları silme ve Reddit toplu silme hakkında sorular: ban riski, güvenli hız, gizlilik ve neden tamamen ücretsiz?',
     },
     compare: {
-      title: 'Ücretsiz Redact.dev Alternatifi — NukeAll vs Redact, Cyd, TweetDeleter ve Power Delete Suite',
+      title: 'Ücretsiz Redact.dev Alternatifi — NukeAll vs Redact, Cyd, TweetDeleter',
       description:
-        'Ücretsiz Redact.dev veya TweetDeleter alternatifi mi arıyorsun? Açık kaynak NukeAll ile Redact, Cyd, TweetDeleter ve Power Delete Suite karşılaştırması.',
+        'Ücretsiz Redact.dev veya TweetDeleter alternatifi mi arıyorsun? Sınırsız ve açık kaynak NukeAll ile ücretli araçların farkını gör.',
     },
     privacy: {
       title: 'Gizlilik Politikası — NukeAll Hiçbir Veri Toplamaz',
       description:
-        'NukeAll tarayıcı eklentisi sunucu, hesap veya telemetri kullanmaz. Tanıtım sitesi yalnızca çerezsiz Cloudflare Web Analytics kullanır.',
+        'NukeAll tarayıcı eklentisi sunucu, üyelik veya telemetri kullanmaz. Verilerin tamamen kendi cihazında kalır.',
     },
     sponsor: {
       title: 'NukeAll’a Destek Ol — Ücretsiz Sosyal Medya Temizleyiciyi Yaşat',
@@ -35,29 +35,49 @@ export const tr: Dict = {
         'NukeAll reklamsız, sınırsız ve bağımsız geliştirilen ücretsiz bir projedir. Buy Me a Coffee üzerinden bir kahve ısmarlayarak alan adı masraflarına ve yeni özelliklere destek olabilirsin.',
     },
     guideTweets: {
-      title: 'Tüm Tweetleri ve X Yanıtlarını Ücretsiz Silme Rehberi (2026) — NukeAll',
+      title: 'Twitter (X) Tüm Tweetleri ve Yanıtları Ücretsiz Silme (2026) — NukeAll',
       description:
-        'X (Twitter) üzerindeki tüm tweet, yanıt, beğeni, repost ve yer imlerini nasıl toplu silersin? 3.200 tweet sınırını tweets.js arşivi ile aş, şifreni paylaşma.',
+        'X (Twitter) tüm tweetleri, yanıtları, beğenileri ve repostları ücretsiz toplu silme rehberi — 3.200 tweet sınırını resmi veri arşiviyle aş, şifreni paylaşma.',
+    },
+    guideXLikes: {
+      title: 'Twitter (X) Tüm Beğenileri Silme (Toplu Beğeni Kaldırma) — NukeAll',
+      description:
+        'X (Twitter) hesabındaki tüm eski beğenileri tek tek uğraşmadan ve ücret ödemeden doğrudan tarayıcının içinden toplu kaldır.',
     },
     guideIgComments: {
-      title: 'Instagram Yorumlarını ve Beğenileri Toplu Silme (Şifresiz) — NukeAll',
+      title: 'Instagram Tüm Yorumları Silme (Toplu, Ücretsiz & Şifresiz) — NukeAll',
       description:
-        'Şifreni üçüncü taraf uygulamalara vermeden tarayıcının içinde eski Instagram yorumlarını, beğenilerini ve gönderilerini Türkçe karakter düzeltmeli JSON desteğiyle sil.',
+        'Instagram tüm yorumları silme işlemini üçüncü taraf riskli uygulamalara şifreni vermeden doğrudan tarayıcında ücretsiz ve güvenli şekilde yap.',
+    },
+    guideIgLikes: {
+      title: 'Instagram Tüm Beğenileri Geri Alma ve Gönderileri Toplu Silme — NukeAll',
+      description:
+        'Instagram’da eski gönderi ve reels beğenilerini toplu kaldır veya kendi gönderilerini şifresiz, ücretsiz ve güvenli hızda temizle.',
     },
     guideIgDm: {
-      title: 'Instagram DM Mesajlarını Otomatik Geri Çekme ve Silme — NukeAll',
+      title: 'Instagram Tüm DM Mesajlarını Otomatik Silme (Geri Çekme) — NukeAll',
       description:
-        'Instagram Direct sohbetlerinde yalnızca kendi gönderdiğin mesajları karşı taraftan da kaldırmak için otomatik gönderimi geri al (unsend) — %100 yerel.',
+        'Instagram Direct sohbetlerinde yalnızca kendi gönderdiğin mesajları karşı taraftan da kaldıracak şekilde otomatik geri al (unsend) — %100 yerel.',
     },
     guideReddit: {
-      title: 'Reddit Yorumlarını ve Gönderilerini Üzerine Yazıp Silme — NukeAll',
+      title: 'Reddit Tüm Yorumları Silme — Ücretsiz Üzerine Yazıp Toplu Sil — NukeAll',
       description:
-        'Arşiv botlarına karşı Reddit yorum ve gönderilerini silmeden önce 0–3 tur rastgele veya özel metinle üzerine yaz, comments.csv arşiviyle tüm geçmişini temizle.',
+        'Reddit tüm yorumları silmeden önce 0–3 tur rastgele veya özel metinle üzerine yaz, 1.000 öğe sınırını aşıp tüm geçmişini iz bırakmadan temizle.',
+    },
+    guideRedditPosts: {
+      title: 'Reddit Tüm Postları Silme — Toplu Gönderi Temizleme (Ücretsiz) — NukeAll',
+      description:
+        'Reddit hesabındaki tüm eski postları ve başlıkları tek tek uğraşmadan üzerine yazarak toplu sil. Sınırsız, şifresiz ve tamamen yerel.',
     },
     guideLinkedin: {
       title: 'LinkedIn Eski Gönderileri Tarih Seçerek Toplu Silme — NukeAll',
       description:
-        'LinkedIn üzerindeki eski gönderi, yorum ve tepkilerini tarih aralığına göre (> 30 gün, > 6 ay, > 1 yıl) filtrele veya Shares.csv arşiviyle tarayıcında güvenle sil.',
+        'LinkedIn üzerindeki eski gönderi, yorum ve beğenilerini tarih aralığına göre (> 30 gün, > 6 ay, > 1 yıl) tarayıcında güvenle sil.',
+    },
+    guideSocialWipe: {
+      title: 'Sosyal Medya Geçmişi Silme & Dijital Ayak İzi Temizleme — NukeAll',
+      description:
+        'X, Instagram, Reddit ve LinkedIn hesaplarındaki tüm eski gönderi, yorum, beğeni ve mesajları şifresiz ve ücretsiz toplu temizleme rehberi.',
     },
     notFound: {
       title: 'Sayfa bulunamadı — NukeAll',

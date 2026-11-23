@@ -10,10 +10,14 @@ const ROUTE_PAIRS = [
   { en: 'https://nukeall.app/privacy/', tr: 'https://nukeall.app/tr/gizlilik/' },
   { en: 'https://nukeall.app/sponsor/', tr: 'https://nukeall.app/tr/destek/' },
   { en: 'https://nukeall.app/delete-all-tweets/', tr: 'https://nukeall.app/tr/tum-tweetleri-silme/' },
+  { en: 'https://nukeall.app/delete-all-x-likes/', tr: 'https://nukeall.app/tr/twitter-tum-begenileri-silme/' },
   { en: 'https://nukeall.app/delete-instagram-comments/', tr: 'https://nukeall.app/tr/instagram-yorumlari-toplu-silme/' },
+  { en: 'https://nukeall.app/delete-instagram-likes/', tr: 'https://nukeall.app/tr/instagram-tum-begenileri-silme/' },
   { en: 'https://nukeall.app/delete-instagram-dm/', tr: 'https://nukeall.app/tr/instagram-dm-mesaj-silme/' },
   { en: 'https://nukeall.app/delete-reddit-comments/', tr: 'https://nukeall.app/tr/reddit-yorum-silme/' },
+  { en: 'https://nukeall.app/delete-all-reddit-posts/', tr: 'https://nukeall.app/tr/reddit-tum-postlari-silme/' },
   { en: 'https://nukeall.app/delete-linkedin-posts/', tr: 'https://nukeall.app/tr/linkedin-eski-gonderi-silme/' },
+  { en: 'https://nukeall.app/wipe-social-media-history/', tr: 'https://nukeall.app/tr/sosyal-medya-gecmisi-silme/' },
 ];
 
 export default defineConfig({

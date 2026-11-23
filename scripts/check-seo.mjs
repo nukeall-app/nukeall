@@ -36,8 +36,11 @@ for (const file of files) {
   check(/<meta[^>]+name="description"[^>]+content="[^"]+"/i.test(html), 'missing meta description');
   check(/<meta[^>]+property="og:title"[^>]+content="[^"]+"/i.test(html), 'missing og:title');
   check(/<meta[^>]+property="og:image"[^>]+content="[^"]+"/i.test(html), 'missing og:image');
+  check(html.includes('/favicon-48.png'), 'missing 48x48 PNG favicon link');
+  check(html.includes('/favicon.ico'), 'missing favicon.ico link');
 
   if (!is404) {
+    check(/<meta[^>]+name="robots"[^>]+content="index,\s*follow/i.test(html), 'missing index, follow robots meta');
     check(/<link[^>]+rel="canonical"[^>]+href="https:\/\/nukeall\.app[^"]*"/i.test(html), 'missing canonical');
     check(/<link[^>]+rel="alternate"[^>]+hreflang="en"/i.test(html), 'missing hreflang="en"');
     check(/<link[^>]+rel="alternate"[^>]+hreflang="tr"/i.test(html), 'missing hreflang="tr"');
@@ -48,6 +51,14 @@ for (const file of files) {
     check(
       html.includes('"@type":"SoftwareApplication"') || html.includes('"@type": "SoftwareApplication"'),
       'missing SoftwareApplication JSON-LD on home page',
+    );
+    check(
+      html.includes('"@type":"WebSite"') || html.includes('"@type": "WebSite"'),
+      'missing WebSite JSON-LD on home page',
+    );
+    check(
+      html.includes('https://nukeall.app/icon-512.png'),
+      'missing PNG Organization logo (icon-512.png) on home page',
     );
   }
 

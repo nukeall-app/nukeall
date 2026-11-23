@@ -2,17 +2,25 @@ import { absUrl, path, t, type Lang, type PageKey } from '../i18n/routes';
 
 export type GuideKey =
   | 'guideTweets'
+  | 'guideXLikes'
   | 'guideIgComments'
+  | 'guideIgLikes'
   | 'guideIgDm'
   | 'guideReddit'
-  | 'guideLinkedin';
+  | 'guideRedditPosts'
+  | 'guideLinkedin'
+  | 'guideSocialWipe';
 
 export const GUIDE_KEYS: GuideKey[] = [
   'guideTweets',
+  'guideXLikes',
   'guideIgComments',
+  'guideIgLikes',
   'guideIgDm',
   'guideReddit',
+  'guideRedditPosts',
   'guideLinkedin',
+  'guideSocialWipe',
 ];
 
 export interface GuideStep {
@@ -165,7 +173,7 @@ export const guides: Record<GuideKey, Record<Lang, GuideLocaleContent>> = {
     en: {
       navLabel: 'Instagram Comments & Likes',
       eyebrow: 'Instagram Guide · Zero Password Sharing',
-      h1: 'How to Bulk Delete Instagram Comments & Likes Safely',
+      h1: 'How to Delete All Instagram Comments in Bulk (Free & Safe)',
       lead:
         'Clean up years of Instagram comments, likes and posts using your own logged-in browser session on instagram.com — never hand over your password or 2FA code to shady cleaner apps.',
       highlights: [
@@ -220,7 +228,7 @@ export const guides: Record<GuideKey, Record<Lang, GuideLocaleContent>> = {
     tr: {
       navLabel: 'Instagram Yorum & Beğeni Silme',
       eyebrow: 'Instagram Rehberi · Şifresiz ve Güvenli',
-      h1: 'Instagram Yorumlarını ve Beğenileri Toplu Silme Rehberi',
+      h1: 'Instagram Tüm Yorumları Toplu Silme Rehberi (Şifresiz & Ücretsiz)',
       lead:
         'Şifreni ve iki aşamalı doğrulama kodunu riskli mobil uygulamalara vermeden, doğrudan tarayıcındaki açık instagram.com oturumu üzerinden eski yorumlarını, beğenilerini ve gönderilerini toplu temizle.',
       highlights: [
@@ -389,7 +397,7 @@ export const guides: Record<GuideKey, Record<Lang, GuideLocaleContent>> = {
     en: {
       navLabel: 'Overwrite & Delete Reddit',
       eyebrow: 'Reddit Guide · 0–3 Pass Overwrite Before Delete',
-      h1: 'How to Overwrite & Mass Delete Reddit Comments and Posts',
+      h1: 'How to Delete All Reddit Comments (Overwrite & Mass Wipe Free)',
       lead:
         'Deleting a Reddit comment removes it from public threads, but third-party scrapers may cache the last version they saw. NukeAll edits your comments and posts with randomized or custom text before deleting.',
       highlights: [
@@ -444,7 +452,7 @@ export const guides: Record<GuideKey, Record<Lang, GuideLocaleContent>> = {
     tr: {
       navLabel: 'Reddit Yorum Üzerine Yaz & Sil',
       eyebrow: 'Reddit Rehberi · Silmeden Önce 0–3 Tur Üzerine Yazma',
-      h1: 'Reddit Yorumlarını ve Gönderilerini Üzerine Yazarak Silme',
+      h1: 'Reddit Tüm Yorumları ve Geçmişi Üzerine Yazarak Toplu Silme',
       lead:
         'Reddit’te bir yorumu doğrudan silmek genel akıştan kaldırır ancak arşiv botları son sürümü saklayabilir. NukeAll, her yorum veya gönderiyi silmeden önce rastgele ya da özel metinle üzerine yazarak düzenler.',
       highlights: [
@@ -607,6 +615,486 @@ export const guides: Record<GuideKey, Record<Lang, GuideLocaleContent>> = {
         },
       ],
       moreGuidesTitle: 'Diğer platform temizleme rehberleri',
+    },
+  },
+  guideXLikes: {
+    en: {
+      navLabel: 'Delete All X (Twitter) Likes',
+      eyebrow: 'X (Twitter) Likes Guide · 100% Free & Local',
+      h1: 'How to Delete All Likes on X (Twitter) for Free',
+      lead:
+        'Unliking thousands of old posts by hand on X takes hours, and paid tools charge monthly subscriptions. NukeAll removes all your X likes directly inside your signed-in browser tab — unlimited, free and without sharing passwords.',
+      highlights: [
+        {
+          title: 'Works Even With Private Likes',
+          body: 'Because NukeAll operates inside your own logged-in x.com tab, it cleans your own Likes tab cleanly without third-party OAuth apps.',
+        },
+        {
+          title: 'Filter Before Unliking',
+          body: 'Keep likes from recent months using the calendar date picker, or search by keyword and profanity filter before confirming.',
+        },
+        {
+          title: 'Full Archive Support',
+          body: 'Got years of likes? Load your official X data download inside your browser to clear old likes past live timeline limits.',
+        },
+      ],
+      stepsTitle: 'Step-by-step: Bulk unlike all tweets on X',
+      steps: [
+        {
+          title: 'Install NukeAll and open x.com',
+          body: 'Install the free NukeAll extension on Chrome, Firefox, Edge or Brave and open x.com while signed in.',
+        },
+        {
+          title: 'Select X (Twitter) → Likes',
+          body: 'Open the NukeAll side panel, pick Likes as the content type, and click Go to X & Scan.',
+        },
+        {
+          title: 'Narrow by date or review everything',
+          body: 'Pick From / To dates or presets (> 30d, > 6m, > 1y) in the Review tab to protect recent likes if needed.',
+        },
+        {
+          title: 'Start Safe cleanup',
+          body: 'Confirm your list and let NukeAll automatically unlike items at a gentle, human-paced delay.',
+        },
+      ],
+      tipTitle: 'Tip for thousands of likes',
+      tipBody:
+        'Keep the default Safe speed and daily safety limit enabled. If X asks to pause, NukeAll waits automatically and resumes from its saved checkpoint.',
+      faqTitle: 'Deleting X likes FAQ',
+      faqs: [
+        {
+          q: 'Is there any limit on how many X likes I can remove for free?',
+          a: 'No. NukeAll is 100% free and open source with zero daily paywalls or 30-day limits.',
+        },
+        {
+          q: 'Do I need to enter my X password or API key?',
+          a: 'Never. Everything runs locally inside the X tab you already signed into.',
+        },
+        {
+          q: 'Can I save a backup before removing my likes?',
+          a: 'Yes. You can export your selected list as JSON, CSV or a searchable offline HTML file right from the Review screen.',
+        },
+      ],
+      moreGuidesTitle: 'Other platform cleanup guides',
+    },
+    tr: {
+      navLabel: 'Twitter (X) Tüm Beğenileri Silme',
+      eyebrow: 'X (Twitter) Beğeni Rehberi · Ücretsiz ve Şifresiz',
+      h1: 'Twitter (X) Tüm Beğenileri Toplu Silme Rehberi (Ücretsiz)',
+      lead:
+        'X (Twitter) hesabındaki yüzlerce veya binlerce eski beğeniyi tek tek geri çekmek saatler sürer; ücretli uygulamalar ise abonelik ve şifre ister. NukeAll tüm beğenilerini açık tarayıcı sekmen üzerinden tamamen ücretsiz ve sınırsız temizler.',
+      highlights: [
+        {
+          title: 'Gizli Beğenilerde Bile Çalışır',
+          body: 'X beğenileri herkese gizli olsa bile NukeAll kendi açık oturumundan kendi Beğeniler sekmeni güvenle tarayıp geri alır.',
+        },
+        {
+          title: 'Tarih ve Kelime Filtreleme',
+          body: 'Son aylardaki beğenilerini koruyup yalnızca seçtiğin tarihten eski veya belirli kelimeleri içeren beğenileri kaldırabilirsin.',
+        },
+        {
+          title: 'Resmi Veri Arşivi Desteği',
+          body: 'Yıllar öncesindeki beğenilerine ulaşmak için resmi X veri indirmendeki beğeni listeni tarayıcı içine yükleyebilirsin.',
+        },
+      ],
+      stepsTitle: 'Adım adım: X (Twitter) beğenilerini toplu kaldırma',
+      steps: [
+        {
+          title: 'NukeAll eklentisini kur ve x.com’u aç',
+          body: 'Chrome, Firefox, Edge veya Brave tarayıcına NukeAll’u kur ve giriş yaptığın x.com sekmesini aç.',
+        },
+        {
+          title: 'X (Twitter) → Beğeniler türünü seç',
+          body: 'Yan panelden yalnızca Beğeniler’i seçip X’te Otomatik Git & Tara butonuna tıkla.',
+        },
+        {
+          title: 'İstersen tarih veya kelime seç',
+          body: 'İncele ekranında takvimden tarih aralığı seç veya korumak istediklerinin işaretini kaldır.',
+        },
+        {
+          title: 'Güvenli hızda temizliği başlat',
+          body: 'Onayladıktan sonra NukeAll hesabını yormayan insansı hızda beğenilerini otomatik geri alır.',
+        },
+      ],
+      tipTitle: 'Hesap güvenliği ipucu',
+      tipBody:
+        'Varsayılan Güvenli hız ve günlük güvenli limiti açık tut. X geçici bekleme isterse NukeAll otomatik duraklayıp kaldığı yerden devam eder.',
+      faqTitle: 'Twitter tüm beğenileri silme SSS',
+      faqs: [
+        {
+          q: 'Beğeni silmek için günlük limit veya ücretli üyelik var mı?',
+          a: 'Hayır. NukeAll tamamen ücretsiz ve açık kaynaklıdır; 30 gün veya beğeni sayısı sınırı yoktur.',
+        },
+        {
+          q: 'Hesap şifremi girmem gerekiyor mu?',
+          a: 'Asla. NukeAll zaten açık olan tarayıcı oturumunu kullanır, şifre veya doğrulama kodu istemez.',
+        },
+        {
+          q: 'Silmeden önce beğendiğim içeriklerin yedeğini alabilir miyim?',
+          a: 'Evet. İncele ekranından tek tıkla JSON, CSV veya aranabilir çevrimdışı HTML yedek indirebilirsin.',
+        },
+      ],
+      moreGuidesTitle: 'Diğer platform temizleme rehberleri',
+    },
+  },
+  guideIgLikes: {
+    en: {
+      navLabel: 'Instagram Likes & Posts',
+      eyebrow: 'Instagram Guide · Likes & Posts Cleanup',
+      h1: 'How to Unlike Instagram Posts & Delete All Posts Safely',
+      lead:
+        'Unlike old photos and reels or wipe your own old Instagram posts without giving your login to sketchy mobile apps. NukeAll automates Instagram’s Your Activity view cleanly inside your desktop browser.',
+      highlights: [
+        {
+          title: 'No Risky Cleaner Logins',
+          body: 'Avoid account locks caused by sharing your password with third-party mobile apps — NukeAll runs locally in your active instagram.com tab.',
+        },
+        {
+          title: 'Likes, Comments or Posts',
+          body: 'Pick exactly what you want to clean: unlike old posts, delete past comments, or wipe your own uploaded posts with review confirmation.',
+        },
+        {
+          title: 'Clean Official JSON Export Support',
+          body: 'Load your official Meta data download directly inside your browser to filter older likes and posts before deleting.',
+        },
+      ],
+      stepsTitle: 'Step-by-step: Bulk unlike or delete Instagram posts',
+      steps: [
+        {
+          title: 'Open instagram.com in your desktop browser',
+          body: 'Sign in on instagram.com, then open the NukeAll side panel and choose Instagram.',
+        },
+        {
+          title: 'Choose Likes or Posts and Scan',
+          body: 'Select Likes (or Posts) in NukeAll and press Go to Instagram & Scan. NukeAll navigates to Your Activity and gathers your items.',
+        },
+        {
+          title: 'Review and uncheck keepers',
+          body: 'Filter by date or search in Review Grid, uncheck anything you want to keep, and download an optional backup.',
+        },
+        {
+          title: 'Start Safe cleanup',
+          body: 'Run deletion with randomized human delays to stay comfortably within Instagram rate limits.',
+        },
+      ],
+      tipTitle: 'Keep Safe speed enabled on Instagram',
+      tipBody:
+        'Instagram monitors rapid clicks closely. Always keep Safe speed enabled and split massive multi-year cleanups across days using the built-in daily limit.',
+      faqTitle: 'Instagram likes & posts cleanup FAQ',
+      faqs: [
+        {
+          q: 'Can NukeAll both unlike Instagram posts and delete my own posts?',
+          a: 'Yes. Pick Likes to remove your likes from other people’s posts, or Posts to bulk-delete your own shared posts.',
+        },
+        {
+          q: 'Is my Instagram password shared anywhere?',
+          a: 'No. NukeAll has zero servers and never asks for passwords or 2FA codes.',
+        },
+        {
+          q: 'Can I delete Instagram comments and DM messages too?',
+          a: 'Yes — select Comments or Chat Messages (DM) in the same Instagram panel, or read our dedicated Instagram comment and DM guides.',
+        },
+      ],
+      moreGuidesTitle: 'Other platform cleanup guides',
+    },
+    tr: {
+      navLabel: 'Instagram Tüm Beğeni & Gönderileri Silme',
+      eyebrow: 'Instagram Rehberi · Beğeni ve Gönderi Temizliği',
+      h1: 'Instagram Tüm Beğenileri Geri Alma ve Gönderileri Toplu Silme',
+      lead:
+        'Instagram’da yıllardır beğendiğin eski gönderileri geri almak veya kendi paylaşımlarını toplu silmek için telefonuna güvensiz uygulamalar kurmana ve şifreni paylaşmana gerek yok. NukeAll doğrudan bilgisayar tarayıcında ücretsiz çalışır.',
+      highlights: [
+        {
+          title: 'Şifresiz ve Güvenli',
+          body: 'Şifre isteyen mobil "cleaner" uygulamalar hesap kapanmasına yol açabilir. NukeAll yalnızca tarayıcındaki açık instagram.com oturumunu kullanır.',
+        },
+        {
+          title: 'Beğeni, Yorum veya Gönderi Seçimi',
+          body: 'İster başkalarının gönderilerindeki eski beğenilerini toplu geri çek, ister kendi eski gönderilerini tek listeden seçip kaldır.',
+        },
+        {
+          title: 'Türkçe Uyumlu Resmi Arşiv Desteği',
+          body: 'Meta’dan indirdiğin resmi Instagram veri arşivini Türkçe karakterler bozulmadan tarayıcı içinde filtreleyebilirsin.',
+        },
+      ],
+      stepsTitle: 'Adım adım: Instagram beğenilerini ve gönderilerini temizleme',
+      steps: [
+        {
+          title: 'Tarayıcıda instagram.com’u aç',
+          body: 'Masaüstü tarayıcında instagram.com hesabına giriş yap ve NukeAll yan panelinden Instagram sekmesini seç.',
+        },
+        {
+          title: 'Beğeniler veya Gönderiler seçip Tara’ya bas',
+          body: 'Temizlemek istediğin türü işaretle ve Instagram’a Git & Tara butonuna tıkla; NukeAll Hareketlerin sayfasını otomatik açıp listeler.',
+        },
+        {
+          title: 'Onay ekranında saklamak istediklerini ayır',
+          body: 'Tarih ya da kelimeyle filtrele; silinmesini istemediğin anıların işaretini kaldır ve istersen yedek al.',
+        },
+        {
+          title: 'Güvenli hızda temizliği başlat',
+          body: 'İnsansı bekleme aralıkları ve günlük limit korumasıyla Instagram kısıtlamasına takılmadan temizle.',
+        },
+      ],
+      tipTitle: 'Instagram için Güvenli hız önerisi',
+      tipBody:
+        'Instagram peş peşe hızlı işlemlere karşı hassastır. Çok eski ve kalabalık hesaplarda Güvenli hızı ve günlük limiti açık tutman en sağlıklı sonucu verir.',
+      faqTitle: 'Instagram beğeni ve gönderi silme SSS',
+      faqs: [
+        {
+          q: 'Hem eski beğenilerimi geri alabilir hem de kendi gönderilerimi silebilir miyim?',
+          a: 'Evet. Tür seçiciden Beğeniler veya Gönderiler seçeneğini ayrı ayrı seçip temizleyebilirsin.',
+        },
+        {
+          q: 'Instagram tüm yorumları silme özelliği de var mı?',
+          a: 'Evet. Aynı panelde Yorumlar seçeneğini işaretleyerek eski yorumlarını da şifresiz ve toplu silebilirsin.',
+        },
+        {
+          q: 'Hesap şifremi vermem gerekiyor mu?',
+          a: 'Hayır, NukeAll sunucusuz çalışır ve asla şifre veya doğrulama kodu istemez.',
+        },
+      ],
+      moreGuidesTitle: 'Diğer platform temizleme rehberleri',
+    },
+  },
+  guideRedditPosts: {
+    en: {
+      navLabel: 'Delete All Reddit Posts',
+      eyebrow: 'Reddit Posts Guide · Overwrite & Wipe Free',
+      h1: 'How to Delete All Reddit Posts Free (Overwrite & Mass Clean)',
+      lead:
+        'Want to delete every submission and text post on your Reddit profile without keeping third-party archive copies? NukeAll edits your Reddit posts 1–3 times with random or custom text and deletes them cleanly — unlimited and 100% local.',
+      highlights: [
+        {
+          title: 'Overwrite Before Deleting (0–3×)',
+          body: 'Scrub text post bodies before removal so scraper caches replace your original words instead of storing them forever.',
+        },
+        {
+          title: 'Clean Past the 1,000-Post Limit',
+          body: 'Reddit profiles hide history beyond ~1,000 entries. Import your official Reddit data download to wipe posts from years ago.',
+        },
+        {
+          title: 'Keep High-Score Posts Safe',
+          body: 'Filter by subreddit, date range or score, and automatically protect popular or pinned submissions you want to leave online.',
+        },
+      ],
+      stepsTitle: 'Step-by-step: Bulk delete all Reddit posts',
+      steps: [
+        {
+          title: 'Set overwrite passes in Settings',
+          body: 'Open NukeAll Settings and pick 1 to 3 overwrite passes (random words or your own custom replacement text).',
+        },
+        {
+          title: 'Pick Reddit → Posts and Scan',
+          body: 'Select Posts in the Reddit tab and click Go to Reddit & Scan while signed into reddit.com.',
+        },
+        {
+          title: 'Or upload your official Reddit posts CSV',
+          body: 'Got years of submissions? Drop your Reddit archive into Archive Import to load history past the 1,000-post cap.',
+        },
+        {
+          title: 'Filter, back up optionally and wipe',
+          body: 'Review every post before deleting, keep high-karma threads if desired, and start safe automated cleanup.',
+        },
+      ],
+      tipTitle: 'Want to keep thread links intact?',
+      tipBody:
+        'You can enable "Overwrite only (do not delete yet)" in Settings to sanitize old text posts in place without removing the thread completely.',
+      faqTitle: 'Deleting all Reddit posts FAQ',
+      faqs: [
+        {
+          q: 'Can NukeAll delete both Reddit posts and comments?',
+          a: 'Yes. Scan Posts to delete submissions, or scan Comments to overwrite and bulk-delete all your Reddit comments.',
+        },
+        {
+          q: 'Does it work on the new www.reddit.com design?',
+          a: 'Yes. NukeAll supports both current Reddit and old.reddit.com cleanly without needing legacy userscripts.',
+        },
+        {
+          q: 'What if I have more than 1,000 Reddit posts?',
+          a: 'Request your official Reddit data archive, load your posts file under Archive Import, and NukeAll cleans deep history too.',
+        },
+      ],
+      moreGuidesTitle: 'Other platform cleanup guides',
+    },
+    tr: {
+      navLabel: 'Reddit Tüm Postları Silme',
+      eyebrow: 'Reddit Gönderi Rehberi · Üzerine Yaz & Toplu Sil',
+      h1: 'Reddit Tüm Postları Silme Rehberi (Ücretsiz & Üzerine Yazmalı)',
+      lead:
+        'Reddit hesabında bugüne kadar açtığın tüm gönderileri (postları) tek tek silmek yerine saniyeler içinde topla, dilersen önce üzerine rastgele metin yazdır ve kalıcı olarak temizle. Tamamen ücretsiz ve sınırsız.',
+      highlights: [
+        {
+          title: 'Silmeden Önce Üzerine Yaz (0–3 Tur)',
+          body: 'Metin içeren eski postlarının üzerine 1–3 tur rastgele veya özel metin yazarak üçüncü taraf arşiv botlarında eski yazıların kalmasını önler.',
+        },
+        {
+          title: '1.000 Post Sınırını Aş',
+          body: 'Reddit profil sayfası en fazla ~1.000 öğe gösterir. Resmi Reddit veri indirmendeki gönderi dosyasını yükleyerek yıllar öncesini de temizlersin.',
+        },
+        {
+          title: 'Yüksek Puanlı Postları Koru',
+          body: 'Topluluk, tarih veya beğeni puanına göre filtrele; saklamak istediğin faydalı başlıkları otomatik hariç tut.',
+        },
+      ],
+      stepsTitle: 'Adım adım: Reddit’teki tüm gönderileri silme',
+      steps: [
+        {
+          title: 'Ayarlar’dan üzerine yazma sayısını seç',
+          body: 'NukeAll Ayarlar sekmesinden silme öncesi kaç tur (1–3 önerilir) üzerine yazılacağını belirle.',
+        },
+        {
+          title: 'Reddit → Gönderiler seç ve Tara’ya bas',
+          body: 'reddit.com açıkken üst şeritten Reddit’i, tür olarak da Gönderiler’i seçip Reddit’e Git & Tara butonuna tıkla.',
+        },
+        {
+          title: 'Çok eski postlar için resmi arşiv yükle',
+          body: '1.000 öğeden eski gönderilerini temizlemek için Reddit veri arşivini Arşiv Yükle sekmesine bırak.',
+        },
+        {
+          title: 'Listeyi onayla ve temizliği başlat',
+          body: 'İncele ekranından tarih/kelime filtresi uygula, istersen yerel yedek al ve Güvenli hızda silmeyi başlat.',
+        },
+      ],
+      tipTitle: 'Başlıklar silinmeden içerik temizleme',
+      tipBody:
+        'Ayarlar’daki "Sadece üzerine yaz (henüz silme)" seçeneğini açarsan gönderileri silmeden yalnızca içindeki eski metinleri temizleyebilirsin.',
+      faqTitle: 'Reddit tüm postları silme SSS',
+      faqs: [
+        {
+          q: 'Hem Reddit postlarını hem Reddit yorumlarını toplu silebilir miyim?',
+          a: 'Evet. Gönderiler ve Yorumlar seçeneklerinin her ikisi de tek eklentide ücretsiz olarak yer alır.',
+        },
+        {
+          q: 'Yeni Reddit tasarımında sorunsuz çalışıyor mu?',
+          a: 'Evet. Eski scriptlerin aksine NukeAll hem yeni www.reddit.com hem de old.reddit.com üzerinde sorunsuz çalışır.',
+        },
+        {
+          q: '1.000’den eski gönderilerim görünmüyorsa ne yapmalıyım?',
+          a: 'Reddit ayarlarından veri arşivini talep edip NukeAll’un Arşiv Yükle sekmesine yüklemen yeterlidir.',
+        },
+      ],
+      moreGuidesTitle: 'Diğer platform temizleme rehberleri',
+    },
+  },
+  guideSocialWipe: {
+    en: {
+      navLabel: 'Wipe Social Media History',
+      eyebrow: 'Complete Privacy Guide · 4 Networks in One Tool',
+      h1: 'How to Wipe Your Social Media History & Digital Footprint Free',
+      lead:
+        'Before a job search, graduation or fresh start, clean years of public posts, replies, comments, likes and sent messages across X, Instagram, Reddit and LinkedIn — free, unlimited and without uploading your passwords anywhere.',
+      highlights: [
+        {
+          title: '4 Networks in One Browser Extension',
+          body: 'Clean X (Twitter), Instagram (comments, likes, posts & DMs), Reddit (posts & comments) and LinkedIn from one consistent panel.',
+        },
+        {
+          title: 'Profanity & Date Filters Built In',
+          body: 'Scan locally for profanity (EN + TR word lists) or custom keywords, filter by exact calendar dates, and preview every single item first.',
+        },
+        {
+          title: 'Keep a Private Personal Copy',
+          body: 'Download your own searchable offline HTML archive or JSON/CSV backup before wiping anything permanently.',
+        },
+      ],
+      stepsTitle: 'Step-by-step: Clean your entire digital footprint',
+      steps: [
+        {
+          title: 'Install NukeAll (1 minute)',
+          body: 'Load NukeAll in Chrome, Firefox, Edge or Brave — zero account registration, zero telemetry and zero subscription fees.',
+        },
+        {
+          title: 'Clean one network at a time',
+          body: 'Switch between X, Instagram, Reddit and LinkedIn inside the extension bar while signed into each tab.',
+        },
+        {
+          title: 'Use official archives for multi-year history',
+          body: 'Download your data archives from each platform to clear posts older than live timeline caps.',
+        },
+        {
+          title: 'Review, back up and run safely',
+          body: 'Protect important memories, export an offline backup, and let Safe human-paced deletion run cleanly.',
+        },
+      ],
+      tipTitle: 'Why stay browser-local instead of cloud deleters?',
+      tipBody:
+        'Cloud services charge $8–$24/month and require handing over login access or API tokens. NukeAll runs inside your own computer memory so your private history stays yours.',
+      faqTitle: 'Digital footprint cleanup FAQ',
+      faqs: [
+        {
+          q: 'Is NukeAll really free across all 4 platforms?',
+          a: 'Yes. X, Instagram, Reddit and LinkedIn are all unlimited and free forever under the GPL-3.0 open-source license.',
+        },
+        {
+          q: 'What platforms are supported right now?',
+          a: 'X (Twitter), Instagram, Reddit and LinkedIn are live today. Bluesky, Threads, Facebook and YouTube are planned next.',
+        },
+        {
+          q: 'Does NukeAll flag embarrassing posts automatically?',
+          a: 'Yes — its offline profanity filter highlights posts containing English or Turkish profanity or any custom keywords you add.',
+        },
+      ],
+      moreGuidesTitle: 'Platform-specific cleanup guides',
+    },
+    tr: {
+      navLabel: 'Sosyal Medya Geçmişi Silme',
+      eyebrow: 'Dijital Ayak İzi Rehberi · Tek Eklentide 4 Platform',
+      h1: 'Sosyal Medya Geçmişi ve Dijital Ayak İzi Silme Rehberi (Ücretsiz)',
+      lead:
+        'Yeni bir işe başvurmadan önce veya dijital geçmişini sıfırlamak istediğinde X, Instagram, Reddit ve LinkedIn hesaplarındaki eski gönderi, yorum, beğeni ve mesajları şifresiz ve ücretsiz şekilde tek yerden temizle.',
+      highlights: [
+        {
+          title: 'Tek Panelde 4 Sosyal Ağ',
+          body: 'X (Twitter), Instagram (yorum, beğeni, gönderi ve DM geri alma), Reddit (post ve yorum üzerine yazma) ile LinkedIn’i aynı panelden yönet.',
+        },
+        {
+          title: 'Tarih Seçici & Yerel Küfür Filtresi',
+          body: 'Başlangıç/bitiş tarihi belirle, tek tıkla 1 yıl+ öncekileri seç veya tarayıcı içi EN + TR küfür filtresiyle riskli paylaşımları bul.',
+        },
+        {
+          title: 'Silmeden Önce Kişisel Yedek',
+          body: 'Geçmişini kalıcı olarak silmeden önce bilgisayarında aranabilir çevrimdışı HTML veya JSON/CSV yedeğini sakla.',
+        },
+      ],
+      stepsTitle: 'Adım adım: Dijital geçmişini baştan sona temizleme',
+      steps: [
+        {
+          title: 'NukeAll’u 1 dakikada tarayıcına ekle',
+          body: 'Chrome, Firefox, Edge veya Brave’e ücretsiz kur; üyelik, şifre veya abonelik gerekmez.',
+        },
+        {
+          title: 'Her platformu sırayla tara',
+          body: 'Açık X, Instagram, Reddit veya LinkedIn sekmen üzerinden tek tıkla silinecek içerik türünü tarat.',
+        },
+        {
+          title: 'Yıllar öncesi için veri arşivini yükle',
+          body: 'Platformların göstermediği çok eski içerikleri temizlemek için resmi veri indirmelerini içeri aktar.',
+        },
+        {
+          title: 'Onayla, yedekle ve Güvenli hızda temizle',
+          body: 'Saklamak istediğin anıları koru ve hesabını yormayan insansı hızda temizliği başlat.',
+        },
+      ],
+      tipTitle: 'Neden sunucusuz ve tarayıcı içi temizlik?',
+      tipBody:
+        'Ücretli temizlik siteleri hem ayda $8–$24 ister hem de hesabına dışarıdan bağlanır. NukeAll yalnızca senin tarayıcı sekmen içinde çalıştığı için verilerin hiç dışarı çıkmaz.',
+      faqTitle: 'Sosyal medya geçmişi silme SSS',
+      faqs: [
+        {
+          q: 'Tüm platformlar gerçekten ücretsiz ve sınırsız mı?',
+          a: 'Evet. X, Instagram, Reddit ve LinkedIn temizliği tamamen ücretsizdir; 30 gün veya adet sınırı yoktur.',
+        },
+        {
+          q: 'Küfür içeren eski paylaşımları otomatik bulabilir miyim?',
+          a: 'Evet. Çevrimdışı küfür filtresi İngilizce ve Türkçe küfür kelimelerini (ve kendi eklediğin kelimeleri) tarayıcında otomatik işaretler.',
+        },
+        {
+          q: 'Başka hangi platformlar gelecek?',
+          a: 'Bluesky, Threads, Facebook ve YouTube desteği geliştirme planında yer almaktadır.',
+        },
+      ],
+      moreGuidesTitle: 'Platform bazında detaylı rehberler',
     },
   },
 };

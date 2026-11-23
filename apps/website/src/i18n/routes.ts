@@ -14,10 +14,14 @@ export type PageKey =
   | 'privacy'
   | 'sponsor'
   | 'guideTweets'
+  | 'guideXLikes'
   | 'guideIgComments'
+  | 'guideIgLikes'
   | 'guideIgDm'
   | 'guideReddit'
+  | 'guideRedditPosts'
   | 'guideLinkedin'
+  | 'guideSocialWipe'
   | 'notFound';
 
 /** Page equivalents across languages — used for hreflang and the language switcher. */
@@ -29,10 +33,14 @@ export const routes: Record<PageKey, Record<Lang, string>> = {
   privacy: { en: '/privacy/', tr: '/tr/gizlilik/' },
   sponsor: { en: '/sponsor/', tr: '/tr/destek/' },
   guideTweets: { en: '/delete-all-tweets/', tr: '/tr/tum-tweetleri-silme/' },
+  guideXLikes: { en: '/delete-all-x-likes/', tr: '/tr/twitter-tum-begenileri-silme/' },
   guideIgComments: { en: '/delete-instagram-comments/', tr: '/tr/instagram-yorumlari-toplu-silme/' },
+  guideIgLikes: { en: '/delete-instagram-likes/', tr: '/tr/instagram-tum-begenileri-silme/' },
   guideIgDm: { en: '/delete-instagram-dm/', tr: '/tr/instagram-dm-mesaj-silme/' },
   guideReddit: { en: '/delete-reddit-comments/', tr: '/tr/reddit-yorum-silme/' },
+  guideRedditPosts: { en: '/delete-all-reddit-posts/', tr: '/tr/reddit-tum-postlari-silme/' },
   guideLinkedin: { en: '/delete-linkedin-posts/', tr: '/tr/linkedin-eski-gonderi-silme/' },
+  guideSocialWipe: { en: '/wipe-social-media-history/', tr: '/tr/sosyal-medya-gecmisi-silme/' },
   notFound: { en: '/404', tr: '/404' },
 };
 

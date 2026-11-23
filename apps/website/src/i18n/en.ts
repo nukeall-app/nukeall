@@ -26,29 +26,29 @@ export const en = {
   ogLocale: 'en_US',
   meta: {
     home: {
-      title: 'NukeAll — Delete All Tweets, Instagram, Reddit & LinkedIn History Free (Open Source)',
+      title: 'NukeAll — Delete All Tweets, Instagram Comments & Reddit Posts Free',
       description:
-        'Free, open-source browser extension to bulk delete all your tweets, likes, Instagram comments & DMs, Reddit comments and old LinkedIn posts. Unlimited, 100% local — a private Redact.dev alternative.',
+        'Free open-source browser extension to bulk delete all tweets, X likes, Instagram comments, posts & DMs, Reddit comments & posts, and old LinkedIn posts — 100% local, no password.',
     },
     install: {
       title: 'Install NukeAll — Firefox, Chrome, Edge & Brave Setup Guide',
       description:
-        'Step-by-step guide to install the free NukeAll extension on Firefox (Add-ons or about:debugging) and Chrome, Edge or Brave (load unpacked from GitHub Releases).',
+        'Step-by-step guide to install the free NukeAll extension on Firefox, Chrome, Edge or Brave in 1 minute from GitHub Releases.',
     },
     faq: {
       title: 'NukeAll FAQ — Account Safety, Privacy & How Bulk Deleting Works',
       description:
-        'Answers about deleting all tweets for free, bulk deleting Instagram comments and Reddit comments safely: ban risk, safe speed limits, where your data goes and why it is free.',
+        'Answers about deleting all tweets, Instagram comments, Reddit posts & likes safely: ban risk, safe speed limits, privacy and why it is free.',
     },
     compare: {
-      title: 'Redact.dev Alternative — NukeAll vs Redact, Cyd, TweetDeleter & Power Delete Suite',
+      title: 'Redact.dev Alternative — NukeAll vs Redact, Cyd, TweetDeleter & Shreddit',
       description:
-        'Looking for a free Redact.dev or TweetDeleter alternative? Compare NukeAll, the open source tweet deleter, with Redact, Cyd, TweetDeleter and Power Delete Suite.',
+        'Looking for a free Redact.dev or TweetDeleter alternative? Compare NukeAll, the open-source bulk deleter, with Redact, Cyd, TweetDeleter and Power Delete Suite.',
     },
     privacy: {
       title: 'Privacy Policy — NukeAll Collects Nothing',
       description:
-        'The NukeAll extension collects no data: no servers, no telemetry, no account. The website only uses cookieless Cloudflare Web Analytics.',
+        'The NukeAll extension collects no data: no servers, no telemetry, no account. Everything stays inside your own browser.',
     },
     sponsor: {
       title: 'Support NukeAll — Keep the Free Open Source Cleaner Alive',
@@ -56,29 +56,49 @@ export const en = {
         'NukeAll is free forever and built by one independent developer. Buy me a coffee to help cover domain costs, fix platform updates and keep it $0 for everyone.',
     },
     guideTweets: {
-      title: 'How to Delete All Tweets & X Replies for Free (2026) — NukeAll',
+      title: 'Delete All Tweets & X Replies Free (2026) — NukeAll',
       description:
-        'Step-by-step guide to bulk delete all tweets, replies, likes, reposts and bookmarks on X (Twitter) — including tweets.js archive import past the 3,200 limit.',
+        'Bulk delete all your tweets, replies, likes, reposts and bookmarks on X (Twitter) free and unlimited — even past the 3,200 post limit, with zero password sharing.',
+    },
+    guideXLikes: {
+      title: 'Delete All Likes on X (Twitter) Free (Bulk Unlike Tool) — NukeAll',
+      description:
+        'Automatically unlike all tweets and remove old X likes inside your own signed-in browser tab without paid subscriptions or API keys.',
     },
     guideIgComments: {
-      title: 'Bulk Delete Instagram Comments & Likes Without Giving Your Password — NukeAll',
+      title: 'Delete All Instagram Comments Free (Bulk, No Password) — NukeAll',
       description:
-        'Delete old Instagram comments, likes and posts safely inside your browser via Your Activity or JSON export (with UTF-8 encoding fix) — zero credential sharing.',
+        'How to mass delete all Instagram comments and likes safely inside your browser without shady cleaner apps or sharing your password.',
+    },
+    guideIgLikes: {
+      title: 'Mass Unlike Instagram Likes & Delete All Posts Free — NukeAll',
+      description:
+        'Unlike old Instagram photos and reels or bulk delete your own Instagram posts safely inside your browser — free, unlimited and zero login sharing.',
     },
     guideIgDm: {
-      title: 'Unsend Your Instagram Direct Messages (DM) Automatically — NukeAll',
+      title: 'Unsend All Instagram DM Messages Automatically Free — NukeAll',
       description:
-        'Clean up your own sent messages in any Instagram Direct chat automatically without deleting your entire account or using risky third-party apps.',
+        'Automatically unsend your own sent messages in any Instagram Direct chat so they disappear for both sides — no account deletion required.',
     },
     guideReddit: {
-      title: 'Overwrite & Delete All Reddit Comments and Posts Safely — NukeAll',
+      title: 'Delete All Reddit Comments Free (Overwrite & Mass Delete) — NukeAll',
       description:
-        'Mass-delete your Reddit comments and submissions with 0–3 pass random or custom text overwriting before deletion + comments.csv archive import.',
+        'Mass-delete all Reddit comments with 0–3 pass random or custom text overwriting before deletion — works past the 1,000-item limit.',
+    },
+    guideRedditPosts: {
+      title: 'Delete All Reddit Posts Free (Overwrite & Wipe History) — NukeAll',
+      description:
+        'How to mass delete all Reddit posts and submissions safely with automatic text overwriting before deletion — unlimited, local and free.',
     },
     guideLinkedin: {
-      title: 'Delete Old LinkedIn Posts & Activity by Date Range — NukeAll',
+      title: 'Delete Old LinkedIn Posts & Activity by Date Free — NukeAll',
       description:
-        'Filter and bulk delete old LinkedIn posts, comments and reactions by exact date range using Snowflake URN timestamps or Shares.csv archive import — 100% locally.',
+        'Filter and bulk delete old LinkedIn posts, comments and likes by exact calendar date before a job move — 100% inside your browser.',
+    },
+    guideSocialWipe: {
+      title: 'Wipe Social Media History & Clean Digital Footprint Free — NukeAll',
+      description:
+        'How to wipe years of social media posts, comments, likes and DMs across X, Instagram, Reddit and LinkedIn for free without uploading your data.',
     },
     notFound: {
       title: 'Page not found — NukeAll',
